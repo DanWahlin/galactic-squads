@@ -1,0 +1,27 @@
+{
+  "name": "galactic-db",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode=fully-armed-and-operational-battle-station",
+    "dev": "webpack-dev-server"
+  },
+  "author": "Darth Vader",
+  "license": "Galactic Lic. - Ep. 5",
+  "dependencies": {
+    "@fluentui/web-components": "^0.14.2",
+    "@microsoft/fast-colors": "^5.1.2",
+    "@microsoft/fast-element": "^0.22.2",
+    "@microsoft/fast-foundation": "^1.14.0",
+    "lodash-es": "^4.17.21"
+  },
+  "devDependencies": {
+    "clean-webpack-plugin": "^3.0.0",
+    "ts-loader": "^8.0.17",
+    "typescript": "^4.2.2",
+    "webpack": "^5.24.2",
+    "webpack-cli": "^4.5.0",
+    "webpack-dev-server": "^3.11.2"
+  }
+}

@@ -1,5 +1,5 @@
 import { FASTElement, customElement, html, css, ref, observable } from '@microsoft/fast-element';
-import { createColorPalette, FluentButton, FluentCard, FluentDesignSystemProvider } from '@fluentui/web-components';
+import { createColorPalette, FluentAnchor, FluentButton, FluentCard, FluentDesignSystemProvider, FluentTextField } from '@fluentui/web-components';
 import { parseColorHexRGB } from '@microsoft/fast-colors';
 import { FASTRouter } from './router';
 import { MainRouterConfig } from './routes';
@@ -10,6 +10,8 @@ FluentDesignSystemProvider;
 FASTRouter;
 FluentCard;
 FluentButton;
+FluentTextField;
+FluentAnchor;
 
 const template = html<MainApplication>`
   <fluent-design-system-provider use-defaults 

@@ -7,20 +7,20 @@ import { isSuccess } from '../kernel/http';
 const template = html<AccountSignup>`
   <div class="container">
     <h2>Sign Up</h2>
-    <fast-card @submit=${x => x.signup()}>
+    <fluent-card @submit=${x => x.signup()}>
       <form>
-        <fast-text-field type="text" :value=${sync(x => x.username)} autofocus>Username</fast-text-field>
-        <fast-text-field type="text" :value=${sync(x => x.email)}>Email</fast-text-field>
-        <fast-text-field type="password" :value=${sync(x => x.password)}>Password</fast-text-field>
-        <fast-text-field type="password" :value=${sync(x => x.passwordConfirm)}>Confirm Password</fast-text-field>
-        <fast-button appearance="accent" type="submit" ?disabled=${x => x.session.isWorking}>Sign Up</fast-button>
+        <fluent-text-field type="text" :value=${sync(x => x.username)} autofocus>Username</fluent-text-field>
+        <fluent-text-field type="text" :value=${sync(x => x.email)}>Email</fluent-text-field>
+        <fluent-text-field type="password" :value=${sync(x => x.password)}>Password</fluent-text-field>
+        <fluent-text-field type="password" :value=${sync(x => x.passwordConfirm)}>Confirm Password</fluent-text-field>
+        <fluent-button appearance="accent" type="submit" ?disabled=${x => x.session.isWorking}>Sign Up</fluent-button>
         ${when(x => !!x.message, html`
           <div class="message">${x => x.message}</div>
         `)}
       </form>
-    </fast-card>
+    </fluent-card>
     <p>
-      Already have an account? <fast-anchor href="account/login" appearance="hypertext">Log In</fast-anchor>
+      Already have an account? <fluent-anchor href="account/login" appearance="hypertext">Log In</fluent-anchor>
     </p>
   </div>
 `;
@@ -51,11 +51,11 @@ const styles = css`
     flex-direction: column;
   }
 
-  fast-text-field {
+  fluent-text-field {
     margin: 8px 0 12px 0;
   }
 
-  fast-button {
+  fluent-button {
     align-self: flex-end;
   }
 

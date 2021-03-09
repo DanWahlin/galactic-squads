@@ -2,7 +2,6 @@ import { observable } from '@microsoft/fast-element';
 import { serializeObservables } from '../kernel/serializer';
 
 type UserOptions = {
-  string: IDBArrayKey;
   id: string;
   name: string;
   email: string;

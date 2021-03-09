@@ -3,7 +3,7 @@ import { css, customElement, FASTElement, html, ref } from "@microsoft/fast-elem
 import { Route } from "@microsoft/fast-router";
 import { Session } from "../account/session";
 import { Disposable, EventAggregator } from "../kernel/ea";
-import { TitleBarContentRequest } from "./title-bar-content-request";
+import { TitleBarContent } from "./title-bar-content";
 
 const template = html<TitleBar>`
   <div class="container">
@@ -81,7 +81,7 @@ export class TitleBar extends FASTElement {
   connectedCallback() {
     super.connectedCallback();
 
-    this.sub = this.ea.subscribe(TitleBarContentRequest, x => {
+    this.sub = this.ea.subscribe(TitleBarContent, x => {
       x.getContent().appendTo(this.toolbar);
     });
   }

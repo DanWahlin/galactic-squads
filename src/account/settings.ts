@@ -4,7 +4,7 @@ import { sync } from '../kernel/sync';
 import { getGravatarUrl } from '../kernel/gravatar';
 import { mixin_cardTitle } from '../typography';
 import { mixin_boxShadow, mixin_cardStyles, styles_cardHeading } from '../styles';
-import { TitleBarContentRequest } from '../layouts/title-bar-content-request';
+import { TitleBarContent } from '../layouts/title-bar-content';
 import { EventAggregator } from '../kernel/ea';
 import { NavigationPhase, Route } from '@microsoft/fast-router';
 
@@ -143,7 +143,6 @@ const styles = css`
 })
 export class AccountSettings extends FASTElement {
   @Session session!: Session;
-  @EventAggregator ea!: EventAggregator;
 
   @observable oldPassword = '';
   @observable newPassword = '';
@@ -153,7 +152,7 @@ export class AccountSettings extends FASTElement {
   @observable email = '';
   @observable changeEmailMessage = '';
 
-  private titleBarRequest = new TitleBarContentRequest('Settings');
+  private titleBarContent = new TitleBarContent('Settings', this);
 
   changePassword() {
 
@@ -166,13 +165,5 @@ export class AccountSettings extends FASTElement {
   logout() {
     this.session.logout();
     Route.name.push(this, 'login');
-  }
-
-  enter(phase: NavigationPhase) {
-    phase.onCommit(() => this.ea.publish(this.titleBarRequest));
-  }
-
-  leave(phase: NavigationPhase) {
-    phase.onCommit(() => this.titleBarRequest.removeContent());
   }
 }

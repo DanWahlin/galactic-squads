@@ -1,6 +1,6 @@
 import { Constructable } from '@microsoft/fast-element';
 import { Container } from '@microsoft/fast-foundation';
-import { RouterConfiguration, Route, Layout } from '@microsoft/fast-router';
+import { RouterConfiguration, Route } from '@microsoft/fast-router';
 import { Session } from './account/session';
 import { AccountLogin } from './account/login';
 import { AccountSettings } from './account/settings';

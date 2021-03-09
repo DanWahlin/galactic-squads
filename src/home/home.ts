@@ -1,5 +1,6 @@
 import { customElement, html, css, FASTElement } from '@microsoft/fast-element';
 import { Route } from '@microsoft/fast-router';
+import { TitleBarContent } from '../layouts/title-bar-content';
 
 const template = html<HomeScreen>`
   <fluent-menu>
@@ -42,5 +43,5 @@ const styles = css`
   styles
 })
 export class HomeScreen extends FASTElement {
-
+  private titleBarContent = new TitleBarContent('Home', this);
 }

@@ -1,7 +1,8 @@
 import { css, html } from '@microsoft/fast-element';
+import { FASTElementLayout } from '@microsoft/fast-router';
 
-export const anonymousLayout = {
-  template: html`
+export const anonymousLayout = new FASTElementLayout(
+  html`
     <slot></slot>
     <fluent-card class="help">
       <fluent-anchor appearance="hypertext" href="help">Help</fluent-anchor>
@@ -11,7 +12,7 @@ export const anonymousLayout = {
       <fluent-anchor appearance="hypertext" href="privacy">Privacy</fluent-anchor>
     </fluent-card>
   `,
-  styles: css`
+  css`
     .help {
       position: fixed;
       top: 32px;
@@ -41,4 +42,4 @@ export const anonymousLayout = {
       margin-right: 24px;
     }
   `
-};
+);

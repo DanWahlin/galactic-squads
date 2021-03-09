@@ -1,10 +1,11 @@
 import { css, html } from "@microsoft/fast-element";
+import { FASTElementLayout } from "@microsoft/fast-router";
 import { TitleBar } from './title-bar';
 
 TitleBar;
 
-export const pageLayout = {
-  template: html`
+export const pageLayout = new FASTElementLayout(
+  html`
     <div class="container">
       <title-bar></title-bar>
       <div class="content">
@@ -12,7 +13,7 @@ export const pageLayout = {
       </div>
     </div>
   `,
-  styles: css`
+  css`
     .container {
       width: 100%;
       height: 100%;
@@ -33,4 +34,4 @@ export const pageLayout = {
       right: 0;
     }
   `
-};
+);

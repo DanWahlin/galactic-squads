@@ -1,10 +1,9 @@
-import { FASTElement, customElement, html, css, ref, observable } from '@microsoft/fast-element';
-import { createColorPalette, FluentAnchor, FluentButton, FluentCard, FluentDesignSystemProvider, FluentTextField } from '@fluentui/web-components';
-import { parseColorHexRGB } from '@microsoft/fast-colors';
-import { FASTRouter } from './router';
+import { FASTElement, customElement, html, css } from '@microsoft/fast-element';
+import { FluentAnchor, FluentButton, FluentCard, FluentDesignSystemProvider, FluentTextField } from '@fluentui/web-components';
+import { FASTRouter } from '@microsoft/fast-router';
+import { Container } from '@microsoft/fast-foundation';
 import { MainRouterConfig } from './routes';
 import { fontFaces } from './typography';
-import { Container } from '@microsoft/fast-foundation';
 
 FluentDesignSystemProvider;
 FASTRouter;
@@ -13,12 +12,9 @@ FluentButton;
 FluentTextField;
 FluentAnchor;
 
-const template = html<MainApplication>`
-  <fluent-design-system-provider use-defaults 
-                               base-layer-luminance="1"
-                               background-color="#F7F7F7"
-                               ${ref('provider')}>
-    <fast-router :config=${x => x.config}></fast-router>
+const template = html<GalacticDB>`
+  <fluent-design-system-provider use-defaults>
+    <fast-router :config=${x=> x.config}></fast-router>
   </fluent-design-system-provider>
 `;
 
@@ -37,28 +33,19 @@ const styles = css`
 `;
 
 @customElement({
-  name: 'main-application',
+  name: 'galactic-db',
   template,
   styles
 })
-export class MainApplication extends FASTElement {
+export class GalacticDB extends FASTElement {
   @MainRouterConfig config!: MainRouterConfig;
-  @observable provider!: FluentDesignSystemProvider;
   @Container container!: Container;
 
   connectedCallback() {
     this.container.register(
       // TODO: register global singletons
     );
-    
-    super.connectedCallback();
-  }
 
-  providerChanged() {
-    const accent = "#a03136";
-    const palette = createColorPalette(parseColorHexRGB(accent));
-    
-    this.provider.accentBaseColor = accent;
-    this.provider.accentPalette = palette;
+    super.connectedCallback();
   }
 }

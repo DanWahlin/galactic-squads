@@ -1,12 +1,12 @@
 import { accentFillRestBehavior, neutralFillStealthRestBehavior, neutralOutlineRestBehavior } from "@fluentui/web-components";
 import { css, customElement, FASTElement, html, ref } from "@microsoft/fast-element";
+import { Route } from "@microsoft/fast-router";
 import { Disposable, EventAggregator } from "../kernel/ea";
-import { Navigation } from "../router";
 import { TitleBarContentRequest } from "./title-bar-content-request";
 
 const template = html<TitleBar>`
   <div class="container" ${ref('container')}>
-    <fast-button appearance="stealth" @click=${x => Navigation.push('home')}>
+    <fast-button appearance="stealth" @click=${x => Route.name.push(x, 'home')}>
       <svg version="1.1" 
          xmlns="http://www.w3.org/2000/svg" 
          xmlns:xlink="http://www.w3.org/1999/xlink" 

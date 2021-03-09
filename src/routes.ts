@@ -1,10 +1,8 @@
 import { Constructable } from '@microsoft/fast-element';
 import { Container, DI } from '@microsoft/fast-foundation';
-import { RouterConfiguration, Navigation, Layout } from './router';
+import { RouterConfiguration, Route, Layout } from '@microsoft/fast-router';
 import { Session } from './account/session';
 import { AccountLogin } from './account/login';
-import { AccountSignup } from './account/signup';
-import { ConfirmAccount } from './account/confirm';
 import { AccountSettings } from './account/settings';
 import { HomeScreen } from './home/home';
 import { NotFound } from './not-found';
@@ -27,17 +25,15 @@ class Config extends RouterConfiguration<RouteSettings> {
     this.defaultLayout = pageLayout;
     this.routes.map(
       { path: '', redirect: 'home' },
-      { path: 'home', element: HomeScreen, layout: Layout.default, title: 'Home' },
+      { path: 'home', element: HomeScreen, layout: Layout.default, title: 'Home', name: 'home' },
       { 
         path: 'account', 
         layout: anonymousLayout, 
         settings: { public: true }, 
         title: 'Account',
         children: [
-          { path: "login", element: AccountLogin, title: 'Login' },
-          { path: 'signup', element: AccountSignup, title: "Signup" },
-          { path: 'confirm/{confirmationId}', element: ConfirmAccount, title: "Confirm" },
-          { path: 'settings', element: AccountSettings, layout: pageLayout, title: "Settings", settings: { public: false } },
+          { path: "login", element: AccountLogin, title: 'Login', name: 'login' },
+          { path: 'settings', element: AccountSettings, layout: pageLayout, title: "Settings", name: 'settings', settings: { public: false } },
         ] 
       },
       { path: 'not-found', element: NotFound, title: "Not Found" }
@@ -48,7 +44,7 @@ class Config extends RouterConfiguration<RouteSettings> {
     this.routes.fallback(
       () => session.isLoggedIn
         ? { redirect: 'not-found' }
-        : { redirect: 'account/login' }
+        : { redirect: 'login' }
     );
 
     this.contributors.push({
@@ -65,7 +61,7 @@ class Config extends RouterConfiguration<RouteSettings> {
   
         phase.cancel(() => {
           session.captureReturnUrl();
-          Navigation.replace('account/login');
+          Route.name.replace(phase.router, 'login');
         });
       }
     });

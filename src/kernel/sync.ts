@@ -1,6 +1,6 @@
-import { Binding, BindingBehavior, BindingDirective, CaptureType, ExecutionContext } from "@microsoft/fast-element";
+import { Binding, BindingBehavior, HTMLBindingDirective, CaptureType, ExecutionContext } from "@microsoft/fast-element";
 
-class SyncDirective extends BindingDirective {
+class SyncDirective extends HTMLBindingDirective {
   public createBehavior(target: Node): BindingBehavior {
     const behavior = super.createBehavior(target);
 

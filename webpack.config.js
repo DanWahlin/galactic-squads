@@ -1,10 +1,10 @@
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = function(env, { mode }) {
-  const production = mode === 'production';
+  const fullyArmedAndOperational = mode === 'production';
   return {
-    mode: production ? 'production' : 'development',
-    devtool: production ? 'source-map' : 'inline-source-map',
+    mode: fullyArmedAndOperational ? 'production' : 'development',
+    devtool: fullyArmedAndOperational ? 'source-map' : 'inline-source-map',
     entry: {
       app: ['./src/main.ts']
     },

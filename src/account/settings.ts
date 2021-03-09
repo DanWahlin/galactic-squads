@@ -1,13 +1,12 @@
 import { customElement, html, css, when, observable, FASTElement } from '@microsoft/fast-element';
 import { Session } from './session';
 import { sync } from '../kernel/sync';
-import { Navigation } from '../router/navigation';
 import { getGravatarUrl } from '../kernel/gravatar';
 import { font_cardTitle } from '../typography';
 import { mixin_boxShadow, mixin_cardStyles, styles_cardHeading } from '../styles';
 import { TitleBarContentRequest } from '../layouts/title-bar-content-request';
-import { NavigationPhase } from '../router';
 import { EventAggregator } from '../kernel/ea';
+import { NavigationPhase, Route } from '@microsoft/fast-router';
 
 const template = html<AccountSettings>`
   <div class="container">
@@ -166,7 +165,7 @@ export class AccountSettings extends FASTElement {
   
   logout() {
     this.session.logout();
-    Navigation.push('account/login');
+    Route.name.push(this, 'login');
   }
 
   enter(phase: NavigationPhase) {

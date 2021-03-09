@@ -1,10 +1,10 @@
 import { customElement, html, css, FASTElement } from '@microsoft/fast-element';
+import { Route } from '@microsoft/fast-router';
 import { Session } from '../account/session';
-import { Navigation } from '../router';
 
 const template = html<HomeScreen>`
   <fluent-menu>
-    <fluent-menu-item @click=${x => Navigation.push('account/settings')}>Settings</fluent-menu-item>
+    <fluent-menu-item @click=${x => Route.name.push(x, 'settings')}>Settings</fluent-menu-item>
   </fluent-menu>
 `;
 

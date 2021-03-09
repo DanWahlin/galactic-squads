@@ -6,30 +6,17 @@ import { mixin_cardStyles, styles_cardHeading } from '../styles';
 
 const template = html<AccountLogin>`
   <div class="container">
-    ${when(x => x.readyToLogin, html`
-      <fluent-card>
-        <h2 class="heading">Login</h2>
-        <form @submit=${x => x.login()}>
-          <fluent-text-field type="text" :value=${sync(x => x.username)} autofocus>Username</fluent-text-field>
-          <fluent-text-field type="password" :value=${sync(x => x.password)}>Password</fluent-text-field>
-          <fluent-button appearance="accent" type="submit" ?disabled=${x => x.session.isWorking}>Login</fluent-button>
-          ${when(x => !!x.message, html`
-            <div class="message">${x => x.message}</div>
-          `)}
-        </form>
-        <p>
-          Don't have an account? <fluent-anchor href="account/signup" appearance="hypertext">Sign Up</fluent-anchor>
-        </p>
-      </fluent-card>
-    `)}
-
-    ${when(x => !x.readyToLogin, html<AccountLogin>`
-      <fluent-button appearance="accent" 
-                   class="big"
-                   @click=${x => x.readyToLogin = true}>
-        <span class="big-text">Log In</span>
-      </fluent-button>
-    `)}
+    <fluent-card>
+      <h2 class="heading">Login</h2>
+      <form @submit=${x => x.login()}>
+        <fluent-text-field type="text" :value=${sync(x => x.username)} autofocus>Username</fluent-text-field>
+        <fluent-text-field type="password" :value=${sync(x => x.password)}>Password</fluent-text-field>
+        <fluent-button appearance="accent" type="submit" ?disabled=${x => x.session.isWorking}>Login</fluent-button>
+        ${when(x => !!x.message, html`
+          <div class="message">${x => x.message}</div>
+        `)}
+      </form>
+    </fluent-card>
   </div>
 `;
 
@@ -99,7 +86,6 @@ export class AccountLogin extends FASTElement {
   @observable username = '';
   @observable password = '';
   @observable message = '';
-  @observable readyToLogin = false;
 
   public async login() {
     const response = await this.session.login({

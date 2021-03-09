@@ -13,6 +13,8 @@ class SyncDirective extends HTMLBindingDirective {
     (behavior as any).changeEvent = determineChangeEvent(target as HTMLElement);
     (behavior as any).changeHandler = () => {
       const value = behavior.target.value;
+
+      // HACK: add an official setValue API
       const last = (behavior.bindingObserver as any).last;
       last.propertySource[last.propertyName] = value;
     };

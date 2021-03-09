@@ -1,9 +1,9 @@
 import { FASTElement, customElement, html, css } from '@microsoft/fast-element';
-import { FluentAnchor, FluentButton, FluentCard, FluentDesignSystemProvider, FluentTextField } from '@fluentui/web-components';
-import { FASTRouter } from '@microsoft/fast-router';
-import { Container } from '@microsoft/fast-foundation';
+import { FluentAnchor, FluentButton, FluentCard, FluentDesignSystemProvider, FluentMenu, FluentMenuItem, FluentTextField } from '@fluentui/web-components';
+import { DefaultRouteRecognizer, FASTRouter } from '@microsoft/fast-router';
+import { Container, inject, Registration } from '@microsoft/fast-foundation';
 import { MainRouterConfig } from './routes';
-import { fontFaces } from './typography';
+import { mixin_fontFaces } from './typography';
 
 FluentDesignSystemProvider;
 FASTRouter;
@@ -11,6 +11,8 @@ FluentCard;
 FluentButton;
 FluentTextField;
 FluentAnchor;
+FluentMenu;
+FluentMenuItem;
 
 const template = html<GalacticDB>`
   <fluent-design-system-provider use-defaults>
@@ -19,7 +21,7 @@ const template = html<GalacticDB>`
 `;
 
 const styles = css`
-  ${fontFaces}
+  ${mixin_fontFaces}
   
   :host {
     contain: content;
@@ -38,12 +40,12 @@ const styles = css`
   styles
 })
 export class GalacticDB extends FASTElement {
-  @MainRouterConfig config!: MainRouterConfig;
+  @inject(MainRouterConfig) config!: MainRouterConfig;
   @Container container!: Container;
 
   connectedCallback() {
     this.container.register(
-      // TODO: register global singletons
+      Registration.transient(DefaultRouteRecognizer, DefaultRouteRecognizer)
     );
 
     super.connectedCallback();

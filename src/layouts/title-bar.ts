@@ -1,12 +1,13 @@
 import { accentFillRestBehavior, neutralFillStealthRestBehavior, neutralOutlineRestBehavior } from "@fluentui/web-components";
 import { css, customElement, FASTElement, html, ref } from "@microsoft/fast-element";
 import { Route } from "@microsoft/fast-router";
+import { Session } from "../account/session";
 import { Disposable, EventAggregator } from "../kernel/ea";
 import { TitleBarContentRequest } from "./title-bar-content-request";
 
 const template = html<TitleBar>`
-  <div class="container" ${ref('container')}>
-    <fast-button appearance="stealth" @click=${x => Route.name.push(x, 'home')}>
+  <div class="container">
+    <fluent-button appearance="stealth" class="home" @click=${x => Route.name.push(x, 'home')}>
       <svg version="1.1" 
          xmlns="http://www.w3.org/2000/svg" 
          xmlns:xlink="http://www.w3.org/1999/xlink" 
@@ -24,7 +25,9 @@ const template = html<TitleBar>`
             c-0.276,0-0.5,0.224-0.5,0.5v6.5H14.5z"/>
         </g>
       </svg>
-    </fast-button>
+    </fluent-button>
+    <div class="toolbar" ${ref('toolbar')}></div>
+    <fluent-button appearance="stealth" @click=${x => x.logout()}>Logout</fluent-button>
   </div>
 `;
 
@@ -42,7 +45,15 @@ const styles = css`
     height: 100%;
   }
 
-  fast-button {
+  .toolbar {
+    flex: 1;
+  }
+
+  fluent-button {
+    margin: 0 4px;
+  }
+
+  .home {
     color: ${accentFillRestBehavior.var}
   }
 `.withBehaviors(
@@ -58,14 +69,20 @@ const styles = css`
 })
 export class TitleBar extends FASTElement {
   @EventAggregator ea!: EventAggregator;
-  container!: HTMLDivElement;
+  @Session session!: Session;
+  toolbar!: HTMLDivElement;
   sub: Disposable | null = null;
+
+  logout() {
+    this.session.logout();
+    Route.name.push(this, 'login');
+  }
 
   connectedCallback() {
     super.connectedCallback();
 
     this.sub = this.ea.subscribe(TitleBarContentRequest, x => {
-      x.getContent().appendTo(this.container);
+      x.getContent().appendTo(this.toolbar);
     });
   }
 

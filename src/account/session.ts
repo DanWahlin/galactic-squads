@@ -25,22 +25,6 @@ export type LoginBody = {
   user: User
 };
 
-export type SignupRequest = {
-  username: string;
-  email: string;
-  password: string;
-  passwordConfirm: string;
-}
-
-export type SignupBody = {
-  confirmationId: string;
-}
-
-export type ConfirmAccountRequest = {
-  confirmationId: string;
-  confirmationCode: string;
-}
-
 class SessionImpl implements Session {
   private returnUrl: string = '';
   @observable public currentUser: any = null;

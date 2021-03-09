@@ -6,7 +6,7 @@ type UserOptions = {
   id: string;
   name: string;
   email: string;
-  joinedOn: Date; 
+  joinedOn: string; 
 };
 
 @serializeObservables('User')
@@ -14,7 +14,7 @@ export class User {
   @observable public id!: string;
   @observable public name!: string;
   @observable public email!: string;
-  @observable public joinedOn!: Date; 
+  @observable public joinedOn!: string; 
 
   public constructor(options: UserOptions) {
     Object.assign(this, options);

@@ -11,7 +11,9 @@ const template = html<AccountLogin>`
       <form @submit=${x => x.login()}>
         <fluent-text-field type="text" :value=${sync(x => x.username)} autofocus>Username</fluent-text-field>
         <fluent-text-field type="password" :value=${sync(x => x.password)}>Password</fluent-text-field>
-        <fluent-button appearance="accent" type="submit" ?disabled=${x => x.session.isWorking}>Login</fluent-button>
+        <fluent-button appearance="accent" type="submit" ?disabled=${x => x.session.isWorking}>
+          Login
+        </fluent-button>
         ${when(x => !!x.message, html`
           <div class="message">${x => x.message}</div>
         `)}
@@ -39,7 +41,7 @@ const styles = css`
     margin-bottom: 8%;
   }
 
-  fast-card {
+  fluent-card {
     ${mixin_cardStyles}
   }
 
@@ -56,18 +58,6 @@ const styles = css`
 
   fluent-button[type=submit] {
     align-self: flex-end;
-  }
-
-  fluent-button.big {
-    position: absolute;
-    bottom: 50px;
-    width: 25%;
-    height: 48px;
-  }
-
-  .big-text {
-    font-size: 32px;
-    line-height: 64px;
   }
 
   .message {

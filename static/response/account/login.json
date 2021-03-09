@@ -1,0 +1,15 @@
+{
+  "head": {
+    "status": "ok",
+    "message": "Login successful."
+  },
+  "body": {
+    "user": {
+      "type": "User",
+      "id": "00001EMT7Y689QE1TMC0KBXZ7HB8K",
+      "name": "Darth Vader",
+      "email": "vader@galactic-empire.com",
+      "joinedOn": "19 BBY"
+    }
+  }
+}

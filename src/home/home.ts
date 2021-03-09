@@ -1,6 +1,5 @@
 import { customElement, html, css, FASTElement } from '@microsoft/fast-element';
 import { Route } from '@microsoft/fast-router';
-import { Session } from '../account/session';
 
 const template = html<HomeScreen>`
   <fluent-menu>
@@ -43,5 +42,5 @@ const styles = css`
   styles
 })
 export class HomeScreen extends FASTElement {
-  @Session session!: Session;
+
 }

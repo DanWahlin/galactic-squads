@@ -1,9 +1,14 @@
-import { defaultExecutionContext, DOM, HTMLView, ViewTemplate } from "@microsoft/fast-element";
+import { defaultExecutionContext, DOM, html, HTMLView, ViewTemplate } from "@microsoft/fast-element";
 
 export class TitleBarContentRequest {
   private view: HTMLView | null = null;
+  private template: ViewTemplate;
 
-  constructor(private template: ViewTemplate, private model: any = {}) {}
+  constructor(titleOrTemplate: ViewTemplate | string, private model: any = {}) {
+    this.template = typeof titleOrTemplate === 'string'
+      ? html`${titleOrTemplate}`
+      : titleOrTemplate;
+  }
 
   public getContent() {
     if (this.view === null) {

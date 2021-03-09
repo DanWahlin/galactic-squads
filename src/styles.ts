@@ -1,10 +1,10 @@
-import { font_cardTitle } from "./typography";
+import { mixin_cardTitle } from "./typography";
 
 export const styles_cardHeading = (className: string = 'heading') => `
   .${className} {
     background-color: #FFF;
     border-bottom: 1px solid rgba(0,0,0,0.12);
-    ${font_cardTitle}
+    ${mixin_cardTitle}
     font-size: 20px;
     margin: -4px -16px 0 -16px;
     padding: 8px 16px;

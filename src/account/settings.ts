@@ -2,7 +2,7 @@ import { customElement, html, css, when, observable, FASTElement } from '@micros
 import { Session } from './session';
 import { sync } from '../kernel/sync';
 import { getGravatarUrl } from '../kernel/gravatar';
-import { font_cardTitle } from '../typography';
+import { mixin_cardTitle } from '../typography';
 import { mixin_boxShadow, mixin_cardStyles, styles_cardHeading } from '../styles';
 import { TitleBarContentRequest } from '../layouts/title-bar-content-request';
 import { EventAggregator } from '../kernel/ea';
@@ -12,35 +12,35 @@ const template = html<AccountSettings>`
   <div class="container">
     <aside class="profile-card">
       <header>
-        <img src=${x => getGravatarUrl(x.session.currentUser.email)}">
+        <img src=${x => getGravatarUrl(x.session.currentUser.email)}>
         <h1>${x => x.session.currentUser.name}</h1>
-        <h2>Member since ${x => x.session.currentUser.joinedOn.toLocaleDateString()}</h2>
+        <h2>Member since ${x => x.session.currentUser.joinedOn}</h2>
       </header>
     </aside>
 
-    <fast-card @submit=${x => x.changePassword()}>
+    <fluent-card @submit=${x => x.changePassword()}>
       <h2 class="heading">Change Password</h2>
       <form>
-        <fast-text-field type="password" :value=${sync(x => x.oldPassword)}>Old Password</fast-text-field>
-        <fast-text-field type="password" :value=${sync(x => x.newPassword)}>New Password</fast-text-field>
-        <fast-text-field type="password" :value=${sync(x => x.passwordConfirm)}>Confirm Password</fast-text-field>
-        <fast-button appearance="accent" type="submit" ?disabled=${x => x.session.isWorking}>Update</fast-button>
+        <fluent-text-field type="password" :value=${sync(x => x.oldPassword)}>Old Password</fluent-text-field>
+        <fluent-text-field type="password" :value=${sync(x => x.newPassword)}>New Password</fluent-text-field>
+        <fluent-text-field type="password" :value=${sync(x => x.passwordConfirm)}>Confirm Password</fluent-text-field>
+        <fluent-button appearance="accent" type="submit" ?disabled=${x => x.session.isWorking}>Update</fluent-button>
         ${when(x => !!x.changePasswordMessage, html<AccountSettings>`
           <div class="message">${x => x.changePasswordMessage}</div>
         `)}
       </form>
-    </fast-card>
+    </fluent-card>
 
-    <fast-card @submit=${x => x.changeEmail()}>
+    <fluent-card @submit=${x => x.changeEmail()}>
       <h2 class="heading">Change Email</h2>
       <form>
-        <fast-text-field type="password" :value=${sync(x => x.email)}>New Email</fast-text-field>
-        <fast-button appearance="accent" type="submit" ?disabled=${x => x.session.isWorking}>Update</fast-button>
+        <fluent-text-field type="password" :value=${sync(x => x.email)}>New Email</fluent-text-field>
+        <fluent-button appearance="accent" type="submit" ?disabled=${x => x.session.isWorking}>Update</fluent-button>
         ${when(x => !!x.changeEmailMessage, html<AccountSettings>`
           <div class="message">${x => x.changeEmailMessage}</div>
         `)}
       </form>
-    </fast-card>
+    </fluent-card>
   </div>
 `;
 
@@ -63,7 +63,7 @@ const styles = css`
 
   ${styles_cardHeading()}
 
-  fast-card {
+  fluent-card {
     width: 300px;
     margin-top: 8px;
     ${mixin_cardStyles}
@@ -74,11 +74,11 @@ const styles = css`
     flex-direction: column;
   }
 
-  fast-text-field {
+  fluent-text-field {
     margin: 8px 0 12px 0;
   }
 
-  fast-button {
+  fluent-button {
     align-self: flex-end;
   }
 
@@ -120,7 +120,7 @@ const styles = css`
     color: var(--accent-foreground-cut-rest);
     vertical-align: top;
     z-index: 1;
-    ${font_cardTitle}
+    ${mixin_cardTitle}
   }
 
   .profile-card header h2 {
@@ -153,7 +153,7 @@ export class AccountSettings extends FASTElement {
   @observable email = '';
   @observable changeEmailMessage = '';
 
-  private titleBarRequest = new TitleBarContentRequest(html`Settings`, this);
+  private titleBarRequest = new TitleBarContentRequest('Settings');
 
   changePassword() {
 

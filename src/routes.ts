@@ -1,5 +1,5 @@
 import { Constructable } from '@microsoft/fast-element';
-import { Container, DI } from '@microsoft/fast-foundation';
+import { Container } from '@microsoft/fast-foundation';
 import { RouterConfiguration, Route, Layout } from '@microsoft/fast-router';
 import { Session } from './account/session';
 import { AccountLogin } from './account/login';
@@ -13,9 +13,7 @@ type RouteSettings = {
   public?: boolean
 };
 
-export interface MainRouterConfig extends RouterConfiguration<RouteSettings> {}
-
-class Config extends RouterConfiguration<RouteSettings> {
+export class MainRouterConfig extends RouterConfiguration<RouteSettings> {
   constructor(@Session private session: Session, @Container private container: Container) {
     super();
   }
@@ -25,7 +23,7 @@ class Config extends RouterConfiguration<RouteSettings> {
     this.defaultLayout = pageLayout;
     this.routes.map(
       { path: '', redirect: 'home' },
-      { path: 'home', element: HomeScreen, layout: Layout.default, title: 'Home', name: 'home' },
+      { path: 'home', element: HomeScreen, title: 'Home', name: 'home' },
       { 
         path: 'account', 
         layout: anonymousLayout, 
@@ -71,7 +69,3 @@ class Config extends RouterConfiguration<RouteSettings> {
     return this.container.get(Type) as T;
   }
 }
-
-export const MainRouterConfig = DI.createInterface<MainRouterConfig>(
-  x => x.singleton(Config)
-);

@@ -7,6 +7,7 @@ import { mixin_boxShadow, mixin_cardStyles, styles_cardHeading } from '../styles
 
 const template = html<AccountSettings>`
   <div class="container">
+    <h1>Settings</h1>
     <aside class="profile-card">
       <header>
         <img src=${x => getGravatarUrl(x.session.currentUser.email)}>

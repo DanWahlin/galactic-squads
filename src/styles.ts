@@ -12,8 +12,6 @@ export const styles_cardHeading = (className: string = 'heading') => `
 `;
 
 export const mixin_cardStyles = `
-  background-color: rgba(255,255,255,0.94);
-  backdrop-filter: blur(8px);
   padding: 4px 16px 16px 16px;
 `;
 

@@ -30,6 +30,7 @@ export function isSuccess<T>(response: Response<T>): response is SuccessResponse
 
 export interface Http {
   postAnonymous<T>(url: string, request: any): Promise<Response<T>>;
+  get<T = any>(url: string): Promise<Response<T>>;
 }
 
 class HttpImpl implements Http {
@@ -46,6 +47,22 @@ class HttpImpl implements Http {
     });
 
     return this.serializer.deserialize<Response>(response);
+  }
+
+  async get<T>(url: string) {
+    const response = await fetch(`https://swapi.dev/api/${url}`, {
+      method: 'GET'
+    });
+    
+    const json = await response.json();
+
+    return {
+      head: {
+        status: ResponseStatus.ok as any,
+        message: 'Success',
+      },
+      body: json as T
+    };
   }
 }
 

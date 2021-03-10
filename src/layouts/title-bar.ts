@@ -9,7 +9,7 @@ const template = html<TitleBar>`
     <div class="toolbar">
       <fluent-text-field placeholder="Search"></fluent-text-field>
     </div>
-    <img src=${x => getGravatarUrl(x.session.currentUser.email)}>
+    <img  src=${x => getGravatarUrl(x.session.currentUser.email)}>
   </div>
 `;
 

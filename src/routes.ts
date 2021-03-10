@@ -8,6 +8,7 @@ import { HomeScreen } from './home/home';
 import { NotFound } from './not-found';
 import { anonymousLayout } from './layouts/anonymous-layout';
 import { pageLayout } from './layouts/page-layout';
+import { ChatList } from './chat/chat-list';
 
 type RouteSettings = {
   public?: boolean
@@ -34,6 +35,7 @@ export class MainRouterConfig extends RouterConfiguration<RouteSettings> {
           { path: 'settings', element: AccountSettings, layout: pageLayout, title: "Settings", name: 'settings', settings: { public: false } },
         ] 
       },
+      { path: 'chat', element: ChatList, title: 'Chat', name: 'chat', childRouters: true },
       { path: 'not-found', element: NotFound, title: "Not Found" }
     );
 

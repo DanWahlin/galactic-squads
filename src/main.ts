@@ -1,5 +1,5 @@
 import { FASTElement, customElement, html, css } from '@microsoft/fast-element';
-import { FluentAnchor, FluentButton, FluentCard, FluentDesignSystemProvider, FluentMenu, FluentMenuItem, FluentTextField } from '@fluentui/web-components';
+import { FluentAnchor, FluentButton, FluentCard, FluentCombobox, FluentDesignSystemProvider, FluentDivider, FluentMenu, FluentMenuItem, FluentTextField } from '@fluentui/web-components';
 import { DefaultRouteRecognizer, FASTRouter } from '@microsoft/fast-router';
 import { Container, inject, Registration } from '@microsoft/fast-foundation';
 import { MainRouterConfig } from './routes';
@@ -13,6 +13,7 @@ FluentTextField;
 FluentAnchor;
 FluentMenu;
 FluentMenuItem;
+FluentDivider;
 
 const template = html<GalacticDB>`
   <fluent-design-system-provider use-defaults>

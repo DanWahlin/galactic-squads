@@ -1,11 +1,7 @@
 import { customElement, html, css, FASTElement } from '@microsoft/fast-element';
-import { Route } from '@microsoft/fast-router';
-import { TitleBarContent } from '../layouts/title-bar-content';
 
 const template = html<HomeScreen>`
-  <fluent-menu>
-    <fluent-menu-item @click=${x => Route.name.push(x, 'settings')}>Settings</fluent-menu-item>
-  </fluent-menu>
+
 `;
 
 const styles = css`
@@ -13,27 +9,10 @@ const styles = css`
     contain: content;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    justify-content: flex-end;
+    align-items: center;
+    justify-content: center;
     height: 100%;
     width: 100%;
-  }
-
-  fluent-menu {
-    background-color: rgba(255,255,255,0.94);
-    backdrop-filter: blur(8px);
-    margin-bottom: 1%;
-    margin-right: 1%;
-  }
-
-  fluent-menu-item {
-    text-align: center;
-    font-size: 32px;
-    height: 42px;
-  }
-
-  fluent-menu-item::part(content) {
-    overflow: unset;
   }
 `;
 
@@ -43,5 +22,4 @@ const styles = css`
   styles
 })
 export class HomeScreen extends FASTElement {
-  private titleBarContent = new TitleBarContent('Home', this);
 }

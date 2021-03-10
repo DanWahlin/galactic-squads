@@ -4,9 +4,6 @@ import { sync } from '../kernel/sync';
 import { getGravatarUrl } from '../kernel/gravatar';
 import { mixin_cardTitle } from '../typography';
 import { mixin_boxShadow, mixin_cardStyles, styles_cardHeading } from '../styles';
-import { TitleBarContent } from '../layouts/title-bar-content';
-import { EventAggregator } from '../kernel/ea';
-import { NavigationPhase, Route } from '@microsoft/fast-router';
 
 const template = html<AccountSettings>`
   <div class="container">
@@ -152,18 +149,11 @@ export class AccountSettings extends FASTElement {
   @observable email = '';
   @observable changeEmailMessage = '';
 
-  private titleBarContent = new TitleBarContent('Settings', this);
-
   changePassword() {
 
   }
 
   changeEmail() {
     
-  }
-  
-  logout() {
-    this.session.logout();
-    Route.name.push(this, 'login');
   }
 }

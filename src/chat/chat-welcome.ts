@@ -1,7 +1,7 @@
 import { css, customElement, FASTElement, html } from "@microsoft/fast-element";
 
-const template = html<ChatHome>`
-  Home
+const template = html<ChatWelcome>`
+  <h1>Welcome to Galactic Chat!</h1>
 `;
 
 const styles = css`
@@ -9,10 +9,10 @@ const styles = css`
 `;
 
 @customElement({
-  name: 'chat-home',
+  name: 'chat-welcome',
   template,
   styles
 })
-export class ChatHome extends FASTElement {
+export class ChatWelcome extends FASTElement {
 
 }

@@ -1,11 +1,11 @@
 import { RouterConfiguration } from "@microsoft/fast-router";
-import { ChatHome } from "./chat-home";
+import { ChatWelcome } from "./chat-welcome";
 import { ChatThread } from "./chat-thread";
 
 export class ChatRoutes extends RouterConfiguration {
   configure() {
     this.routes.map(
-      { path: '', element: ChatHome },
+      { path: '', element: ChatWelcome },
       { path: 'thread/{id}', element: ChatThread }
     );
   }

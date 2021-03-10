@@ -1,5 +1,5 @@
-import { FASTElement, customElement, html, css } from '@microsoft/fast-element';
-import { FluentAnchor, FluentButton, FluentCard, FluentDesignSystemProvider, FluentDivider, FluentListbox, FluentMenu, FluentMenuItem, FluentOption, FluentTextField } from '@fluentui/web-components';
+import { FASTElement, customElement, html, css, ref, observable } from '@microsoft/fast-element';
+import { FluentAnchor, FluentButton, FluentCard, FluentDesignSystemProvider, FluentDivider, FluentListbox, FluentMenu, FluentMenuItem, FluentOption, FluentTextField, neutralLayerL1Behavior } from '@fluentui/web-components';
 import { DefaultRouteRecognizer, FASTRouter } from '@microsoft/fast-router';
 import { Container, inject, Registration } from '@microsoft/fast-foundation';
 import { MainRouterConfig } from './routes';
@@ -18,7 +18,7 @@ FluentListbox;
 FluentOption;
 
 const template = html<GalacticDB>`
-  <fluent-design-system-provider use-defaults>
+  <fluent-design-system-provider use-defaults ${ref("provider")}>
     <fast-router :config=${x=> x.config}></fast-router>
   </fluent-design-system-provider>
 `;
@@ -45,6 +45,11 @@ const styles = css`
 export class GalacticDB extends FASTElement {
   @inject(MainRouterConfig) config!: MainRouterConfig;
   @Container container!: Container;
+  @observable provider!: FluentDesignSystemProvider;
+
+  providerChanged() {
+
+  }
 
   connectedCallback() {
     this.container.register(

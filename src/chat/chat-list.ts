@@ -1,9 +1,9 @@
 import { neutralOutlineRestBehavior } from "@fluentui/web-components";
-import { css, customElement, FASTElement, html, observable, ref, repeat } from "@microsoft/fast-element";
+import { css, customElement, FASTElement, html, observable, repeat } from "@microsoft/fast-element";
 import { inject } from "@microsoft/fast-foundation";
 import { NavigationPhase, Route } from "@microsoft/fast-router";
 import { ChatService, ThreadSummary } from "./chat-service";
-import { ChatRoutes } from "./routes";
+import { ChatRoutes } from "./chat-routes";
 
 const template = html<ChatList>`
   <div class="container">

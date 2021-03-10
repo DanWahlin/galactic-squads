@@ -20,6 +20,12 @@ export class ChatService {
 
   constructor(@Http private http: Http) {}
 
+  async getThread(id: string) {
+    await this.getRecentThreadSummaries();
+    const fullId = `thread/${id}`;
+    return this.cachedSummaries!.find(x => x.id === fullId);
+  }
+
   async getRecentThreadSummaries() {
     if (this.cachedSummaries !== null) {
       return this.cachedSummaries;

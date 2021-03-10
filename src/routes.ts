@@ -1,12 +1,11 @@
 import { Constructable } from '@microsoft/fast-element';
 import { Container } from '@microsoft/fast-foundation';
-import { RouterConfiguration, Route } from '@microsoft/fast-router';
+import { RouterConfiguration, Route, Layout } from '@microsoft/fast-router';
 import { Session } from './account/session';
 import { AccountLogin } from './account/login';
 import { AccountSettings } from './account/settings';
 import { HomeScreen } from './home/home';
 import { NotFound } from './not-found';
-import { anonymousLayout } from './layouts/anonymous-layout';
 import { pageLayout } from './layouts/page-layout';
 import { ChatList } from './chat/chat-list';
 
@@ -27,7 +26,7 @@ export class MainRouterConfig extends RouterConfiguration<RouteSettings> {
       { path: 'home', element: HomeScreen, title: 'Home', name: 'home' },
       { 
         path: 'account', 
-        layout: anonymousLayout, 
+        layout: Layout.default, 
         settings: { public: true }, 
         title: 'Account',
         children: [

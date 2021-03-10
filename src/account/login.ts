@@ -31,6 +31,10 @@ const styles = css`
     justify-content: flex-end;
     height: 100%;
     width: 100%;
+    background-color: black;
+    background-image: url(static/image/logo.png);
+    background-repeat: no-repeat, repeat;
+    background-position: center;
   }
 
   .container {
@@ -43,6 +47,7 @@ const styles = css`
 
   fluent-card {
     ${mixin_cardStyles}
+    max-width: 300px;
   }
 
   ${styles_cardHeading()}

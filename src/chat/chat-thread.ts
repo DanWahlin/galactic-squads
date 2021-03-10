@@ -16,5 +16,7 @@ const styles = css`
 export class ChatThread extends FASTElement {
   @observable id!: string;
   
-
+  enter() {
+    
+  }
 }

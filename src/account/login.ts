@@ -49,7 +49,7 @@ const styles = css`
     max-width: 300px;
   }
 
-  ${styles_cardHeading()}
+  ${styles_cardHeading}
 
   form {
     display: flex;

@@ -316,17 +316,6 @@ function findProvider(element: HTMLElement) {
 })
 export class DesignPropertyPanel extends FASTElement {
     @observable provider!: any;
-    providerChanged() {
-        this.provider.registerCSSCustomProperty(neutralLayerL1Behavior);
-        this.provider.style.setProperty(
-            "background-color",
-            `var(--${neutralLayerL1Behavior.name})`
-        );
-        this.provider.backgroundColor = (neutralLayerL1Behavior.value as any)(
-            this.provider.designSystem
-        );
-        this.provider.baseLayerLuminance = 1;
-    }
 
     connectedCallback() {
         super.connectedCallback();

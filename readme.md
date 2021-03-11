@@ -1,4 +1,4 @@
-# GalacticDB
+# Galactic Squads
 
 ## Battle Station Setup
 
@@ -12,7 +12,7 @@
 
 ## Project Setup
 
-* Clone the repository by executing `git clone https://github.com/EisenbergEffect/galactic-db.git`.
+* Clone the repository by executing `git clone https://github.com/EisenbergEffect/galactic-squads.git`.
 * Install the dependencies in the project folder by executing `npm install`.
 
 ## Development

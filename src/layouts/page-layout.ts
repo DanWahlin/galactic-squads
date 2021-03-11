@@ -47,7 +47,7 @@ export const pageLayout = new FASTElementLayout(
 
     .content {
       position: absolute;
-      top: calc(var(--title-bar-height) + 1px);
+      top: var(--title-bar-height);
       bottom: 0;
       left: calc(var(--activity-bar-width) + 1px);
       right: 0;

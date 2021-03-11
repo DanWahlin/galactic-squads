@@ -1,15 +1,17 @@
+import { neutralLayerL1Behavior } from "@fluentui/web-components";
+import { css } from "@microsoft/fast-element";
 import { mixin_cardTitle } from "./typography";
 
-export const styles_cardHeading = (className: string = 'heading') => `
-  .${className} {
-    background-color: #FFF;
+export const styles_cardHeading = css`
+  .heading {
+    background-color: ${neutralLayerL1Behavior.var};
     border-bottom: 1px solid rgba(0,0,0,0.12);
     ${mixin_cardTitle}
     font-size: 20px;
     margin: -4px -16px 0 -16px;
     padding: 8px 16px;
   }
-`;
+`.withBehaviors(neutralLayerL1Behavior);
 
 export const mixin_screen = (display: string = 'block') => `
   contain: content;

@@ -1,5 +1,5 @@
-import { FASTElement, customElement, html, css } from '@microsoft/fast-element';
-import { FluentAccordion, FluentAccordionItem, FluentAnchor, FluentButton, FluentCard, FluentCheckbox, FluentDesignSystemProvider, FluentDivider, FluentListbox, FluentMenu, FluentMenuItem, FluentOption, FluentSlider, FluentSliderLabel, FluentTextField } from '@fluentui/web-components';
+import { FASTElement, customElement, html, css, observable, ref } from '@microsoft/fast-element';
+import { FluentAccordion, FluentAccordionItem, FluentAnchor, FluentButton, FluentCard, FluentCheckbox, FluentDesignSystemProvider, FluentDivider, FluentListbox, FluentMenu, FluentMenuItem, FluentOption, FluentSlider, FluentSliderLabel, FluentTextField, neutralLayerL1Behavior } from '@fluentui/web-components';
 import { DefaultRouteRecognizer, FASTRouter } from '@microsoft/fast-router';
 import { Container, inject, Registration } from '@microsoft/fast-foundation';
 import { MainRouterConfig } from './routes';
@@ -23,7 +23,7 @@ FluentAccordion;
 FluentAccordionItem;
 
 const template = html<GalacticSquads>`
-  <fluent-design-system-provider use-defaults>
+  <fluent-design-system-provider use-defaults ${ref('provider')}>
     <fast-router :config=${x=> x.config}></fast-router>
   </fluent-design-system-provider>
 `;
@@ -50,6 +50,7 @@ const styles = css`
 export class GalacticSquads extends FASTElement {
   @inject(MainRouterConfig) config!: MainRouterConfig;
   @Container container!: Container;
+  @observable provider!: any;
 
   connectedCallback() {
     this.container.register(
@@ -57,5 +58,20 @@ export class GalacticSquads extends FASTElement {
     );
 
     super.connectedCallback();
+  }
+
+  providerChanged() {
+    this.provider.registerCSSCustomProperty(neutralLayerL1Behavior);
+
+    this.provider.style.setProperty(
+        "background-color",
+        `var(--${neutralLayerL1Behavior.name})`
+    );
+
+    this.provider.backgroundColor = (neutralLayerL1Behavior.value as any)(
+        this.provider.designSystem
+    );
+
+    this.provider.baseLayerLuminance = 1;
   }
 }

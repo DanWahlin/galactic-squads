@@ -62,7 +62,7 @@ const styles = css`
 
   ${styles_headers}
 
-  ${styles_cardHeading()}
+  ${styles_cardHeading}
 
   fluent-card {
     width: 300px;

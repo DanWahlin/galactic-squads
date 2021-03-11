@@ -1,4 +1,5 @@
 import { customElement, html, css, FASTElement } from '@microsoft/fast-element';
+import { styles_headers } from '../typography';
 
 // Thanks for the ideas: https://www.writeabout.com/2017/11/darth-vaders-to-do-list-6/
 
@@ -40,6 +41,8 @@ const styles = css`
     display: block;
     padding: 32px;
   }
+
+  ${styles_headers}
 `;
 
 @customElement({

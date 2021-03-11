@@ -4,7 +4,7 @@ const mixin_SegoeUI = (style = 'normal', weight = 'normal') => `
   font-weight: ${weight};
 `;
 
-export const mixin_fontFaces = `
+export const styles_fontFaces = `
   @font-face {
     font-family: Segoe UI;
     font-weight: 300;
@@ -17,3 +17,9 @@ export const mixin_fontFaces = `
 `;
 
 export const mixin_cardTitle = mixin_SegoeUI('normal', 'bold');
+
+export const styles_headers = `
+  h1 {
+    margin-top: 0px;
+  }
+`;

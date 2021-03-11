@@ -9,7 +9,7 @@ const template = html<ChatList>`
   <div class="container">
     <div class="list">
       <h2 class="heading">Chat</h2>
-      <fluent-listbox >
+      <fluent-listbox>
         ${repeat(x => x.threads, html<ThreadSummary, ChatList>`
           <fluent-option value="${x => x.id}" 
                          ?selected=${(x,c) => x === c.parent.selectedThread}

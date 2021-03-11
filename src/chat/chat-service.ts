@@ -1,11 +1,11 @@
 import { Http } from "../kernel/http";
 
-export interface PeopleResult {
+export interface PeopleResponse {
   count: number;
-  results: PersonResult[];
+  results: Person[];
 }
 
-export interface PersonResult {
+export interface Person {
   url: string;
   name: string;
 }
@@ -31,7 +31,7 @@ export class ChatService {
       return this.cachedSummaries;
     }
 
-    const response = await this.http.get<PeopleResult>('people');
+    const response = await this.http.get<PeopleResponse>('people');
 
     return this.cachedSummaries = response.results.map(x => {
       const index = x.url.lastIndexOf("people/");

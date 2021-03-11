@@ -2,7 +2,7 @@ import { customElement, html, css, when, observable, FASTElement } from '@micros
 import { Session } from './session';
 import { sync } from '../kernel/sync';
 import { getGravatarUrl } from '../kernel/gravatar';
-import { mixin_cardTitle } from '../typography';
+import { mixin_cardTitle, styles_headers } from '../typography';
 import { mixin_boxShadow, mixin_cardStyles, styles_cardHeading } from '../styles';
 
 const template = html<AccountSettings>`
@@ -58,6 +58,8 @@ const styles = css`
     flex-direction: column;
     padding: 32px;
   }
+
+  ${styles_headers}
 
   ${styles_cardHeading()}
 

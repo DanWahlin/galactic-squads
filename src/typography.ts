@@ -19,7 +19,7 @@ export const styles_fontFaces = `
 export const mixin_cardTitle = mixin_SegoeUI('normal', 'bold');
 
 export const styles_headers = `
-  h1 {
-    margin-top: 0px;
+  h1, h2, h3, h4, h5, h6 {
+    margin: 0 0 16px 0;
   }
 `;

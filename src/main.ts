@@ -1,5 +1,5 @@
 import { FASTElement, customElement, html, css } from '@microsoft/fast-element';
-import { FluentAnchor, FluentButton, FluentCard, FluentDesignSystemProvider, FluentDivider, FluentListbox, FluentMenu, FluentMenuItem, FluentOption, FluentTextField } from '@fluentui/web-components';
+import { FluentAnchor, FluentButton, FluentCard, FluentCheckbox, FluentDesignSystemProvider, FluentDivider, FluentListbox, FluentMenu, FluentMenuItem, FluentOption, FluentTextField } from '@fluentui/web-components';
 import { DefaultRouteRecognizer, FASTRouter } from '@microsoft/fast-router';
 import { Container, inject, Registration } from '@microsoft/fast-foundation';
 import { MainRouterConfig } from './routes';
@@ -16,6 +16,7 @@ FluentMenuItem;
 FluentDivider;
 FluentListbox;
 FluentOption;
+FluentCheckbox;
 
 const template = html<GalacticSquads>`
   <fluent-design-system-provider use-defaults>

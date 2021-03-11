@@ -23,7 +23,7 @@ const styles = css`
   .container {
     display: flex;
     flex-direction: column;
-    padding: 32px;
+    padding: 16px 0 0 16px;
   }
 `;
 

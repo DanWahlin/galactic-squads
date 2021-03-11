@@ -42,7 +42,7 @@ const styles = css`
     flex-direction: column;
     align-items: center;
     width: 25%;
-    margin-bottom: 8%;
+    margin-bottom: 5%;
   }
 
   fluent-card {

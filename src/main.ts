@@ -17,7 +17,7 @@ FluentDivider;
 FluentListbox;
 FluentOption;
 
-const template = html<GalacticDB>`
+const template = html<GalacticSquads>`
   <fluent-design-system-provider use-defaults ${ref("provider")}>
     <fast-router :config=${x=> x.config}></fast-router>
   </fluent-design-system-provider>
@@ -38,11 +38,11 @@ const styles = css`
 `;
 
 @customElement({
-  name: 'galactic-db',
+  name: 'galactic-squads',
   template,
   styles
 })
-export class GalacticDB extends FASTElement {
+export class GalacticSquads extends FASTElement {
   @inject(MainRouterConfig) config!: MainRouterConfig;
   @Container container!: Container;
   @observable provider!: FluentDesignSystemProvider;

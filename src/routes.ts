@@ -19,7 +19,7 @@ export class MainRouterConfig extends RouterConfiguration<RouteSettings> {
   }
 
   public configure() {
-    this.title = "GalacticDB";
+    this.title = "Squads";
     this.defaultLayout = pageLayout;
     this.routes.map(
       { path: '', redirect: 'home' },

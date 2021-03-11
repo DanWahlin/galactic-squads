@@ -4,6 +4,9 @@ import { sync } from '../kernel/sync';
 import { getGravatarUrl } from '../kernel/gravatar';
 import { mixin_cardTitle, styles_headers } from '../typography';
 import { mixin_boxShadow, mixin_cardStyles, mixin_screen, styles_cardHeading } from '../styles';
+import { DesignPropertyPanel } from './design-property-panel';
+
+DesignPropertyPanel;
 
 const template = html<AccountSettings>`
   <div class="container">
@@ -39,6 +42,8 @@ const template = html<AccountSettings>`
         `)}
       </form>
     </fluent-card>
+
+    <design-property-panel></design-property-panel>
   </div>
 `;
 

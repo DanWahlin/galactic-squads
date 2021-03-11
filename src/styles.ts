@@ -11,6 +11,14 @@ export const styles_cardHeading = (className: string = 'heading') => `
   }
 `;
 
+export const mixin_screen = (display: string = 'block') => `
+  contain: content;
+  display: ${display};
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
+`;
+
 export const mixin_cardStyles = `
   padding: 4px 16px 16px 16px;
 `;

@@ -2,9 +2,9 @@ import { css, customElement, FASTElement, html } from "@microsoft/fast-element";
 import { mixin_screen } from "../styles";
 import { styles_headers } from "../typography";
 
-const template = html<ChatWelcome>`
+const template = html<SquadWelcome>`
   <div class="container">
-    <h1>Welcome to Galactic Chat!</h1>
+    <h1>Welcome to Galactic Squads!</h1>
   </div>
 `;
 
@@ -23,10 +23,10 @@ const styles = css`
 `;
 
 @customElement({
-  name: 'chat-welcome',
+  name: 'squad-welcome',
   template,
   styles
 })
-export class ChatWelcome extends FASTElement {
+export class SquadWelcome extends FASTElement {
 
 }

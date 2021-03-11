@@ -9,6 +9,8 @@ import { NotFound } from './not-found';
 import { pageLayout } from './layouts/page-layout';
 import { ChatList } from './chat/chat-list';
 import { ShipList } from './ships/ship-list';
+import { VehicleList } from './vehicles/vehicle-list';
+import { SquadList } from './squads/squad-list';
 
 type RouteSettings = {
   public?: boolean
@@ -36,7 +38,9 @@ export class MainRouterConfig extends RouterConfiguration<RouteSettings> {
         ] 
       },
       { path: 'chat', element: ChatList, title: 'Chat', name: 'chat', childRouters: true },
+      { path: 'squads', element: SquadList, title: 'Squads', name: 'squads', childRouters: true },
       { path: 'ships', element: ShipList, title: 'Ships', name: 'ships' },
+      { path: 'vehicles', element: VehicleList, title: 'Vehicles', name: 'vehicles' },
       { path: 'not-found', element: NotFound, title: "Not Found" }
     );
 

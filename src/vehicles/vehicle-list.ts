@@ -2,12 +2,12 @@ import { css, customElement, FASTElement, html, observable, repeat } from "@micr
 import { inject } from "@microsoft/fast-foundation";
 import { mixin_screen } from "../styles";
 import { styles_headers } from "../typography";
-import { Ship, ShipService } from "./ship-service";
+import { Vehicle, ShipService } from "./vehicle-service";
 
-const template = html<ShipList>`
+const template = html<VehicleList>`
   <div class="container">
-    <h1>Ships</h1>
-    ${repeat(x => x.ships, html<Ship>`
+    <h1>Vehicles</h1>
+    ${repeat(x => x.ships, html<Vehicle>`
       <div>${x => x.name}</div>
     `)}
   </div>
@@ -28,15 +28,15 @@ const styles = css`
 `;
 
 @customElement({
-  name: 'ship-list',
+  name: 'vehicle-list',
   template,
   styles
 })
-export class ShipList extends FASTElement {
+export class VehicleList extends FASTElement {
   @inject(ShipService) shipService!: ShipService;
-  @observable ships!: Ship[];
+  @observable ships!: Vehicle[];
 
   async enter() {
-    this.ships = await this.shipService.getShips();
+    this.ships = await this.shipService.getVehicles();
   }
 }

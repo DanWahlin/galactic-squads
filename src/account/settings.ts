@@ -3,7 +3,7 @@ import { Session } from './session';
 import { sync } from '../kernel/sync';
 import { getGravatarUrl } from '../kernel/gravatar';
 import { mixin_cardTitle, styles_headers } from '../typography';
-import { mixin_boxShadow, mixin_cardStyles, styles_cardHeading } from '../styles';
+import { mixin_boxShadow, mixin_cardStyles, mixin_screen, styles_cardHeading } from '../styles';
 
 const template = html<AccountSettings>`
   <div class="container">
@@ -44,13 +44,9 @@ const template = html<AccountSettings>`
 
 const styles = css`
   :host {
-    contain: content;
-    display: flex;
+    ${mixin_screen('flex')}
     align-items: flex-start;
-    height: 100%;
-    width: 100%;
     justify-content: flex-start;
-    overflow-y: auto;
   }
 
   .container {

@@ -1,4 +1,4 @@
-import { Http, isSuccess } from "../kernel/http";
+import { Http } from "../kernel/http";
 
 export interface PeopleResult {
   count: number;
@@ -33,18 +33,14 @@ export class ChatService {
 
     const response = await this.http.get<PeopleResult>('people');
 
-    if (isSuccess(response)) {
-      return this.cachedSummaries = response.body.results.map(x => {
-        const index = x.url.lastIndexOf("people/");
-        const unclean = x.url.substr(index + 7);
+    return this.cachedSummaries = response.results.map(x => {
+      const index = x.url.lastIndexOf("people/");
+      const unclean = x.url.substr(index + 7);
 
-        return {
-          id: `thread/${unclean.substr(0, unclean.length - 1)}`,
-          heading: x.name
-        };
-      }) as ThreadSummary[];
-    }
-
-    return [];
+      return {
+        id: `thread/${unclean.substr(0, unclean.length - 1)}`,
+        heading: x.name
+      };
+    }) as ThreadSummary[];
   }
 }

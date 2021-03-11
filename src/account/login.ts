@@ -1,7 +1,6 @@
 import { FASTElement, customElement, html, css, observable, when } from '@microsoft/fast-element';
 import { Session } from './session';
 import { sync } from '../kernel/sync';
-import { isSuccess } from '../kernel/http';
 import { mixin_cardStyles, styles_cardHeading } from '../styles';
 
 const template = html<AccountLogin>`
@@ -83,15 +82,15 @@ export class AccountLogin extends FASTElement {
   @observable message = '';
 
   public async login() {
-    const response = await this.session.login({
+    const user = await this.session.login({
       username: this.username,
       password: this.password
     });
 
-    if (isSuccess(response)) {
-      this.session.navigateToLoginDestination();
+    if (user === null) {
+      this.message = "Invalid credentials provided.";
     } else {
-      this.message = response.head.message;
+      this.session.navigateToLoginDestination();
     }
   }
 }

@@ -1,7 +1,7 @@
 import { observable } from '@microsoft/fast-element';
 import { DI } from '@microsoft/fast-foundation';
 import { Route } from '@microsoft/fast-router';
-import { Http, isSuccess, Response, ResponseStatus } from '../kernel/http';
+import { Http } from '../kernel/http';
 import { User } from './user';
 
 export interface Session {
@@ -9,7 +9,7 @@ export interface Session {
   readonly isLoggedIn: boolean;
   readonly currentUser: User;
 
-  login(request: LoginRequest): Promise<Response<LoginBody>>;
+  login(request: LoginRequest): Promise<User | null>;
   logout(): void;
 
   captureReturnUrl(): void;
@@ -20,10 +20,6 @@ export type LoginRequest = {
   username: string;
   password: string;
 }
-
-export type LoginBody = {
-  user: User
-};
 
 class SessionImpl implements Session {
   private returnUrl: string = '';
@@ -36,33 +32,11 @@ class SessionImpl implements Session {
     return this.currentUser !== null;
   }
   
-  public async login(request: LoginRequest): Promise<Response<LoginBody>> {
+  public async login(request: LoginRequest): Promise<User> {
     try {
       this.isWorking = true;
-
-      if (!request.username || !request.password) {
-        return {
-          head: {
-            status: ResponseStatus.failure,
-            message: 'Please provide a username and password if you wish to login.'
-          }
-        };
-      }
-
-      const response = await this.http.postAnonymous<LoginBody>('account/login', request);
-
-      if (isSuccess(response)) {
-        this.currentUser = response.body.user;
-      }
-
-      return response;
-    } catch {
-      return {
-        head: {
-          status: ResponseStatus.failure,
-          message: 'Unknown Error: Please try again later.'
-        }
-      };
+      this.currentUser = await this.http.post<User>('account/login', request);
+      return this.currentUser;
     } finally {
       this.isWorking = false;
     }

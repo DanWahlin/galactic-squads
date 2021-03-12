@@ -13,7 +13,7 @@ function eventDetail<T = any>(ctx: ExecutionContext) {
 TodoForm;
 
 const template = html<HomeScreen>`
-  <h1>Day at a Glance</h1>
+  <h1>Your Agenda for ${new Date().toLocaleDateString()}</h1>
   <header>
       <todo-form @todo-submit=${(x, c) => x.todoService.createTodo(eventDetail(c))}></todo-form>
   </header>

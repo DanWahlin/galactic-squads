@@ -318,7 +318,7 @@ export class DesignPropertyPanel extends FASTElement {
     @observable provider!: any;
 
     connectedCallback() {
-        super.connectedCallback();
         this.provider = findProvider(this);
+        super.connectedCallback();
     }
 }

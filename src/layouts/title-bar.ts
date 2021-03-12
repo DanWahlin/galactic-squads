@@ -1,5 +1,5 @@
 import { accentFillRestBehavior } from "@fluentui/web-components";
-import { css, customElement, FASTElement, html, observable, ref, when } from "@microsoft/fast-element";
+import { css, customElement, DOM, FASTElement, html, observable, ref, when } from "@microsoft/fast-element";
 import { Route } from "@microsoft/fast-router";
 import { Session } from "../account/session";
 import { getGravatarUrl } from "../kernel/gravatar";
@@ -9,21 +9,19 @@ const template = html<TitleBar>`
     <div class="toolbar">
       <fluent-text-field placeholder="Search"></fluent-text-field>
     </div>
-    <img id="avatar" 
-         ${ref('avatar')}
-         src=${x => getGravatarUrl(x.session.currentUser.email)} 
-         @click=${x => x.menuIsVisible = !x.menuIsVisible}>
+    <fluent-button appearance="stealth" ${ref('avatar')} @click=${x => x.toggleMenu()}>
+      <img src=${x => getGravatarUrl(x.session.currentUser.email)}>
+    </fluent-button>
     ${when(x => x.menuIsVisible, html<TitleBar>`
       <fluent-anchored-region
           :anchorElement="${x => x.avatar}"
-          viewport="viewport-default"
           vertical-positioning-mode="dynamic"
           horizontal-positioning-mode="dynamic">
         <fluent-menu>
-          <fluent-menu-item>Settings</fluent-menu-item>
+          <fluent-menu-item @click=${x => Route.name.push(x, 'settings')}>Settings</fluent-menu-item>
           <fluent-divider></fluent-divider>
-          <fluent-menu-item>Logout</fluent-menu-item>
-        <fluent-menu>
+          <fluent-menu-item @click=${x => x.logout()}>Sign out</fluent-menu-item>
+        </fluent-menu>
       </fluent-anchored-region>
     `)}
   </div>
@@ -59,6 +57,20 @@ const styles = css`
     border-radius: 50%;
     margin-right: 8px;
   }
+
+  fluent-button {
+    background: transparent;
+    height: 100%;
+    width: 54px;
+  }
+
+  fluent-anchored-region {
+    z-index: 1000;
+  }
+
+  fluent-menu {
+    margin-right: -54px;
+  }
 `.withBehaviors(
   accentFillRestBehavior
 );
@@ -72,6 +84,24 @@ export class TitleBar extends FASTElement {
   @Session session!: Session;
   @observable menuIsVisible = false;
   @observable avatar!: HTMLElement;
+
+  async toggleMenu() {
+    if (this.menuIsVisible) {
+      document.removeEventListener('click', this.handleMenuDismiss);
+    }
+
+    this.menuIsVisible = !this.menuIsVisible;
+
+    if (this.menuIsVisible) {
+      await DOM.nextUpdate();
+      document.addEventListener('click', this.handleMenuDismiss);
+    }
+  }
+
+  handleMenuDismiss = () => {
+    this.menuIsVisible = false;;
+    document.removeEventListener('click', this.handleMenuDismiss);
+  };
 
   logout() {
     this.session.logout();

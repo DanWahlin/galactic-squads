@@ -10,7 +10,8 @@
   "author": "Darth Vader",
   "license": "Galactic Lic. - Ep. 5",
   "dependencies": {
-    "@fluentui/web-components": "^0.15.0",
+    "@fluentui/web-components": "^0.16.0",
+    "@microsoft/fast-colors": "^5.1.2",
     "@microsoft/fast-element": "^1.0.0",
     "@microsoft/fast-foundation": "^1.15.1",
     "@microsoft/fast-router": "^0.1.0",

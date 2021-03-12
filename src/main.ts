@@ -1,5 +1,5 @@
 import { FASTElement, customElement, html, css, observable, ref } from '@microsoft/fast-element';
-import { FluentAccordion, FluentAccordionItem, FluentAnchor, FluentButton, FluentCard, FluentCheckbox, FluentDesignSystemProvider, FluentDivider, FluentListbox, FluentMenu, FluentMenuItem, FluentOption, FluentSlider, FluentSliderLabel, FluentTextField, neutralLayerL1Behavior } from '@fluentui/web-components';
+import { FluentAccordion, FluentAccordionItem, FluentAnchor, FluentButton, FluentCard, FluentCheckbox, FluentDataGrid, FluentDataGridCell, FluentDataGridRow, FluentDesignSystemProvider, FluentDivider, FluentListbox, FluentMenu, FluentMenuItem, FluentOption, FluentSlider, FluentSliderLabel, FluentTextField, neutralLayerL1Behavior } from '@fluentui/web-components';
 import { DefaultRouteRecognizer, FASTRouter } from '@microsoft/fast-router';
 import { AnchoredRegion, AnchoredRegionTemplate, Container, inject, Registration } from '@microsoft/fast-foundation';
 import { MainRouterConfig } from './routes';
@@ -24,6 +24,9 @@ FluentAccordionItem;
 FluentAccordion;
 FluentMenu;
 FluentMenuItem;
+FluentDataGrid;
+FluentDataGridRow;
+FluentDataGridCell;
 
 @customElement({
   name: "fluent-anchored-region",

@@ -7,9 +7,7 @@ import { Ship, ShipService } from "./ship-service";
 const template = html<ShipList>`
   <div class="container">
     <h1>Ships</h1>
-    ${repeat(x => x.ships, html<Ship>`
-      <div>${x => x.name}</div>
-    `)}
+    <fluent-data-grid :rowsData=${x => x.ships}></fluent-data-grid>
   </div>
 `;
 
@@ -34,7 +32,7 @@ const styles = css`
 })
 export class ShipList extends FASTElement {
   @inject(ShipService) shipService!: ShipService;
-  @observable ships!: Ship[];
+  @observable ships: Ship[] = [];
 
   async enter() {
     this.ships = await this.shipService.getShips();

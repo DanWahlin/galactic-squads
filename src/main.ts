@@ -1,7 +1,7 @@
 import { FASTElement, customElement, html, css, observable, ref } from '@microsoft/fast-element';
 import { FluentAccordion, FluentAccordionItem, FluentAnchor, FluentButton, FluentCard, FluentCheckbox, FluentDesignSystemProvider, FluentDivider, FluentListbox, FluentMenu, FluentMenuItem, FluentOption, FluentSlider, FluentSliderLabel, FluentTextField, neutralLayerL1Behavior } from '@fluentui/web-components';
 import { DefaultRouteRecognizer, FASTRouter } from '@microsoft/fast-router';
-import { Container, inject, Registration } from '@microsoft/fast-foundation';
+import { AnchoredRegion, AnchoredRegionTemplate, Container, inject, Registration } from '@microsoft/fast-foundation';
 import { MainRouterConfig } from './routes';
 import { styles_fontFaces } from './typography';
 
@@ -21,6 +21,22 @@ FluentSlider;
 FluentSliderLabel;
 FluentAccordion;
 FluentAccordionItem;
+FluentAccordion;
+FluentMenu;
+FluentMenuItem;
+
+@customElement({
+  name: "fluent-anchored-region",
+  template: AnchoredRegionTemplate,
+  styles: css`
+    :host {
+        contain: layout;
+        display: block;
+    }
+  `
+})
+export class FluentAnchoredRegion extends AnchoredRegion {}
+
 
 const template = html<GalacticSquads>`
   <fluent-design-system-provider use-defaults ${ref('provider')}>

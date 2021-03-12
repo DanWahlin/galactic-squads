@@ -1,7 +1,12 @@
-import { css, customElement, FASTElement, html, observable } from "@microsoft/fast-element";
+import { css, customElement, FASTElement, html, observable, repeat } from "@microsoft/fast-element";
+import { inject } from "@microsoft/fast-foundation";
+import { ChatService, Message } from "./chat-service";
 
 const template = html<ChatThread>`
-  Thread (${x => x.id})
+  ${repeat(x => x.messages, html<Message>`
+    <div>${x => x.author}</div>
+    <div>${x => x.message}</div>
+  `)}
 `;
 
 const styles = css`
@@ -14,9 +19,11 @@ const styles = css`
   styles
 })
 export class ChatThread extends FASTElement {
+  @inject(ChatService) chatService!: ChatService;
   @observable id!: string;
-  
-  enter() {
-    
+  @observable messages!: Message[];
+
+  async enter() {
+    this.messages = await this.chatService.getThread(this.id);
   }
 }

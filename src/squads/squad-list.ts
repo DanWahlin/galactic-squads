@@ -78,7 +78,7 @@ export class SquadList extends FASTElement {
   @observable selectedThread!: ThreadSummary;
 
   enter(phase: NavigationPhase) {
-    this.chatService.getRecentThreadSummaries()
+    this.chatService.getSquads()
       .then(x => {
         this.threads = x;
         this.selectedThread = x.find(x => x.id === phase.route.allParams['fast-child-route'])!;

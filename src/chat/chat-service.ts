@@ -15,15 +15,41 @@ export interface ThreadSummary {
   heading: string;
 }
 
+interface SquadsResponse {
+  results: ThreadSummary[];
+}
+
+export interface Message {
+  author: string;
+  message: string;
+}
+
+interface ThreadResponse {
+  results: Message[]
+}
+
 export class ChatService {
   private cachedSummaries: ThreadSummary[] | null = null;
 
   constructor(@Http private http: Http) {}
 
+  async getSquads() {
+    const response = await this.http.get<SquadsResponse>('squads');
+    return response.results;
+  }
+
   async getThread(id: string) {
-    await this.getRecentThreadSummaries();
-    const fullId = `thread/${id}`;
-    return this.cachedSummaries!.find(x => x.id === fullId);
+    try {
+      const response = await this.http.get<ThreadResponse>(`thread/${id}`);
+      return response.results;
+    } catch {
+      return [
+        {
+          author: "Darth Vader",
+          message: "I do not want the Emperor’s prize damaged."
+        }
+      ];
+    }
   }
 
   async getRecentThreadSummaries() {

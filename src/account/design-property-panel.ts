@@ -90,8 +90,8 @@ const template = html<DesignPropertyPanel>`
                         x.provider.baseLayerLuminance = parseFloat(targetValue(c)).toFixed(2);
                     }}
                 >
-                    <fluent-slider-label position="0">Dark</fluent-slider-label>
-                    <fluent-slider-label position="0.24">Dusk</fluent-slider-label>
+                    <fluent-slider-label position="0">Dark Side</fluent-slider-label>
+                    <fluent-slider-label position="0.24">Gray</fluent-slider-label>
                     <fluent-slider-label position="1">Light</fluent-slider-label>
                 </fluent-slider>
             </fluent-accordion-item>

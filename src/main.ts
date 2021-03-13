@@ -1,5 +1,5 @@
 import { FASTElement, customElement, html, css, observable, ref } from '@microsoft/fast-element';
-import { DataGridCellStyles, DataGridRowStyles, FluentAccordion, FluentAccordionItem, FluentAnchor, FluentButton, FluentCard, FluentCheckbox, FluentDataGrid, FluentDataGridCell, FluentDataGridRow, FluentDesignSystemProvider, FluentDivider, FluentListbox, FluentMenu, FluentMenuItem, FluentOption, FluentSlider, FluentSliderLabel, FluentTextField, neutralLayerL1Behavior } from '@fluentui/web-components';
+import { DataGridCellStyles, DataGridRowStyles, FluentAccordion, FluentAccordionItem, FluentAnchor, FluentButton, FluentCard, FluentCheckbox, FluentDataGrid, FluentDataGridCell, FluentDataGridRow, FluentDesignSystemProvider, FluentDivider, FluentListbox, FluentMenu, FluentMenuItem, FluentOption, FluentSlider, FluentSliderLabel, FluentTab, FluentTabs, FluentTextField, neutralLayerL1Behavior } from '@fluentui/web-components';
 import { DefaultRouteRecognizer, FASTRouter } from '@microsoft/fast-router';
 import { AnchoredRegion, AnchoredRegionTemplate, Container, createDataGridCellTemplate, createDataGridRowTemplate, DataGridCell, DataGridRow, inject, Registration } from '@microsoft/fast-foundation';
 import { MainRouterConfig } from './routes';
@@ -27,6 +27,8 @@ FluentMenuItem;
 FluentDataGrid;
 FluentDataGridRow;
 FluentDataGridCell;
+FluentTabs;
+FluentTab;
 
 @customElement({
   name: 'fast-data-grid-row',

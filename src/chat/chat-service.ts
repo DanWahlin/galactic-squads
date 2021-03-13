@@ -1,3 +1,4 @@
+import { Session } from "../account/session";
 import { Http } from "../kernel/http";
 
 export interface PeopleResponse {
@@ -37,11 +38,27 @@ export interface Thread {
 export class ChatService {
   private cachedSummaries: ThreadSummary[] | null = null;
 
-  constructor(@Http private http: Http) {}
+  constructor(@Http private http: Http, @Session private session: Session) {}
 
   async getSquads() {
     const response = await this.http.get<SquadsResponse>('squads');
     return response.results;
+  }
+
+  post(thread: Thread, message: string) {
+    if (!message) {
+      return;
+    }
+    
+    const threadMessage: Message = {
+      author: {
+        id: this.session.currentUser.id,
+        name: this.session.currentUser.name
+      },
+      message
+    };
+
+    thread.messages.push(threadMessage);
   }
 
   async getThread(id: string) {

@@ -44,7 +44,7 @@ const styles = css`
 
   .heading {
     margin: 0;
-    padding: 8px 16px;
+    padding: 12px 16px 11px 16px;
   }
 
   .list {

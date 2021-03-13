@@ -6,10 +6,10 @@
   "messages": [
     {
       "author": {
-        "id": "4",
-        "name": "Darth Vader"
+        "id": "1",
+        "name": "Luke Skywalker"
       },
-      "message": "It is your destiny. Join me, and together we can rule the galaxy as father and son."
+      "message": "So, should I call you dad or master?"
     },
     {
       "author": {
@@ -17,6 +17,20 @@
         "name": "Darth Vader"
       },
       "message": "The Emperor will show you the true nature of the Force. He is your Master now."
+    },
+    {
+      "author": {
+        "id": "1",
+        "name": "Luke Skywalker"
+      },
+      "message": "I don't want to go..."
+    },
+    {
+      "author": {
+        "id": "4",
+        "name": "Darth Vader"
+      },
+      "message": "It is your destiny. Join me, and together we can rule the galaxy as father and son."
     }
   ]
 }

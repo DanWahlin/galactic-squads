@@ -7,7 +7,7 @@ import { Vehicle, ShipService } from "./vehicle-service";
 const template = html<VehicleList>`
   <div class="container">
     <h1>Vehicles</h1>
-    <fluent-data-grid :rowsData=${x => x.vehicles}></fluent-data-grid>
+    <fluent-data-grid :rowsData=${x => x.vehicles} :columnDefinitions=${x => x.columns}></fluent-data-grid>
   </div>
 `;
 
@@ -18,10 +18,13 @@ const styles = css`
   
   ${styles_headers}
 
+  h1 {
+    padding: 16px 0 0 16px;
+  }
+
   .container {
     display: flex;
     flex-direction: column;
-    padding: 16px 0 0 16px;
   }
 `;
 
@@ -33,6 +36,16 @@ const styles = css`
 export class VehicleList extends FASTElement {
   @inject(ShipService) shipService!: ShipService;
   @observable vehicles: Vehicle[] = [];
+  columns = [
+    { columnDataKey: 'name', title: 'Name' },
+    { columnDataKey: 'model', title: 'Model' },
+    { columnDataKey: 'manufacturer', title: 'Manufacturer' },
+    { columnDataKey: 'vehicle_class', title: 'Class' },
+    { columnDataKey: 'cost_in_credits', title: 'Cost' },
+    { columnDataKey: 'crew', title: 'Required Crew' },
+    { columnDataKey: 'passengers', title: 'Max Passengers' },
+    { columnDataKey: 'cargo_capacity', title: 'Max Cargo' },
+  ];
 
   async enter() {
     this.vehicles = await this.shipService.getVehicles();

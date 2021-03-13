@@ -18,10 +18,13 @@ const styles = css`
   
   ${styles_headers}
 
+  h1 {
+    padding: 16px 0 0 16px;
+  }
+
   .container {
     display: flex;
     flex-direction: column;
-    padding: 16px 0 0 16px;
   }
 `;
 

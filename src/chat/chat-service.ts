@@ -12,8 +12,7 @@ export interface Person {
 }
 
 export interface ThreadSummary {
-  id: string;
-  heading: string;
+  owner: EntityReference;
 }
 
 interface SquadsResponse {
@@ -61,14 +60,15 @@ export class ChatService {
     thread.messages.push(threadMessage);
   }
 
-  async getThread(id: string) {
+  async getThread(threadId: string) {
     try {
-      const response = await this.http.get<Thread>(`thread/${id}`);
+      const response = await this.http.get<Thread>(`thread/${threadId}`);
       return response;
     } catch {
       return {
+
         owner: {
-          id: '1000',
+          id: threadId,
           name: 'Conversation'
         },
         messages: [
@@ -94,11 +94,14 @@ export class ChatService {
     return this.cachedSummaries = response.results.map(x => {
       const index = x.url.lastIndexOf("people/");
       const unclean = x.url.substr(index + 7);
+      const id = unclean.substr(0, unclean.length - 1);
 
       return {
-        id: `thread/${unclean.substr(0, unclean.length - 1)}`,
-        heading: x.name
-      };
-    }) as ThreadSummary[];
+        owner: {
+          id,
+          name: x.name
+        }
+      } as ThreadSummary;
+    }).filter(x => x.owner.id !== this.session.currentUser.id);
   }
 }

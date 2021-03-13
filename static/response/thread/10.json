@@ -1,8 +1,29 @@
 {
-  "results": [
+  "owner": {
+    "id": "10",
+    "name": "Obi-Wan Kenobi"
+  },
+  "messages": [
     {
-      "author": "Darth Vader",
+      "author": {
+        "id": "4",
+        "name": "Darth Vader"
+      },
+      "message": "I've been waiting for you Obi-Wan. We meet again, at last. The circle is now complete."
+    },
+    {
+      "author": {
+        "id": "4",
+        "name": "Darth Vader"
+      },
       "message": "When I left you, I was but the learner. Now I am the master."
+    },
+    {
+      "author": {
+        "id": "10",
+        "name": "Obi-Wan Kenobi"
+      },
+      "message": "Only a master of evil, Darth."
     }
   ]
 }

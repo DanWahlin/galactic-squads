@@ -1,5 +1,5 @@
 import { neutralFillStealthRestBehavior, neutralFillRestBehavior, neutralOutlineRestBehavior } from "@fluentui/web-components";
-import { css, customElement, FASTElement, html, observable, repeat } from "@microsoft/fast-element";
+import { css, customElement, FASTElement, html, observable, repeat, when } from "@microsoft/fast-element";
 import { inject } from "@microsoft/fast-foundation";
 import { Session } from "../account/session";
 import { sync } from "../kernel/sync";
@@ -9,8 +9,10 @@ import { ChatService, Message, Thread } from "./chat-service";
 const template = html<ChatThread>`
   <div class="container">
     <header>
-      <img class="avatar" src='static/image/avatar/${x => x.thread?.owner.id}.jpg'>
-      <h2 class="heading">${x => x.thread?.owner.name}</h2>
+      ${when((x, c) => !!x.thread, html`
+        <img class="avatar" src='static/image/avatar/${x => x.thread?.owner.id}.jpg'>
+        <h2 class="heading">${x => x.thread?.owner.name}</h2>
+      `)} 
       <fluent-tabs>
         <fluent-tab>Chat</fluent-tab>
       </fluent-tabs>
@@ -19,7 +21,9 @@ const template = html<ChatThread>`
     <div class="messages">
       ${repeat(x => x.thread?.messages, html<Message, ChatThread>`
         <div class="message-container ${(x, c) => c.parent.messageAuthoredByUser(x) ? 'is-author' : 'not-author'}">
-          <img class="avatar" src='static/image/avatar/${x => x.author.id}.jpg'>
+          ${when((x, c) => !c.parent.messageAuthoredByUser(x), html`
+            <img class="avatar" src='static/image/avatar/${x => x.author.id}.jpg'>
+          `)} 
           <div class="content">
             <div class="author">${x => x.author.name}</div>
             <div class="message">${x => x.message}</div>
@@ -101,10 +105,6 @@ const styles = css`
     align-self: flex-end;
   }
 
-  .is-author .avatar {
-    display: none;
-  }
-
   .not-author .avatar {
     margin-top: 6px;
   }
@@ -182,5 +182,6 @@ export class ChatThread extends FASTElement {
 
   postMessage() {
     this.chatService.post(this.thread, this.messageText);
+    this.messageText = '';
   }
 }

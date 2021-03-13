@@ -11,10 +11,10 @@ const template = html<SquadList>`
       <h2 class="heading">Chat</h2>
       <fluent-listbox>
         ${repeat(x => x.threads, html<ThreadSummary, SquadList>`
-          <fluent-option value="${x => x.id}" 
+          <fluent-option value="${x => x.owner.id}" 
                          ?selected=${(x,c) => x === c.parent.selectedThread}
-                         @click=${(x, c) => Route.path.push(`squads/${x.id}`)}>
-            ${x => x.heading}
+                         @click=${(x, c) => Route.path.push(`squads/thread/${x.owner.id}`)}>
+            ${x => x.owner.name}
           </fluent-option>
         `)}
       </fluent-listbox>
@@ -81,7 +81,7 @@ export class SquadList extends FASTElement {
     this.chatService.getSquads()
       .then(x => {
         this.threads = x;
-        this.selectedThread = x.find(x => x.id === phase.route.allParams['fast-child-route'])!;
+        this.selectedThread = x.find(x => `thread/${x.owner.id}` === phase.route.allParams['fast-child-route'])!;
       });
   }
 }

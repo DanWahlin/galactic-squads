@@ -1,8 +1,29 @@
 {
-  "results": [
+  "owner": {
+    "id": "3",
+    "name": "R2-D2"
+  },
+  "messages": [
     {
-      "author": "Darth Vader",
+      "author": {
+        "id": "3",
+    "name": "R2-D2"
+      },
+      "message": "Beep. Boop. Beep."
+    },
+    {
+      "author": {
+        "id": "4",
+        "name": "Darth Vader"
+      },
       "message": "This will be a day long remembered."
+    },
+    {
+      "author": {
+        "id": "3",
+        "name": "R2-D2"
+      },
+      "message": "Beeeeep!"
     }
   ]
 }

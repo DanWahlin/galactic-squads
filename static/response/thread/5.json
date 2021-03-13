@@ -1,8 +1,22 @@
 {
-  "results": [
+  "owner": {
+    "id": "5",
+    "name": "Leia Organa"
+  },
+  "messages": [
     {
-      "author": "Darth Vader",
-      "message": "We would be honored, if you would join us."
+      "author": {
+        "id": "5",
+        "name": "Leia Organa"
+      },
+      "message": "Lord Vader, I should have known. Only you could be so bold. The Imperial Senate will not sit for this."
+    },
+    {
+      "author": {
+        "id": "4",
+        "name": "Darth Vader"
+      },
+      "message": "Don't play games with me, Your Highness."
     }
   ]
 }

@@ -1,7 +1,6 @@
 import { customElement, html, css, when, observable, FASTElement } from '@microsoft/fast-element';
 import { Session } from './session';
 import { sync } from '../kernel/sync';
-import { getGravatarUrl } from '../kernel/gravatar';
 import { mixin_cardTitle, styles_headers } from '../typography';
 import { mixin_boxShadow, mixin_cardStyles, mixin_screen, styles_cardHeading } from '../styles';
 import { DesignPropertyPanel } from './design-property-panel';
@@ -13,7 +12,7 @@ const template = html<AccountSettings>`
     <h1>Settings</h1>
     <aside class="profile-card">
       <header>
-        <img src=${x => getGravatarUrl(x.session.currentUser.email)}>
+        <img src='static/image/avatar/${x => x.session.currentUser.id}.jpg'}>
         <h1>${x => x.session.currentUser.name}</h1>
         <h2>Member since ${x => x.session.currentUser.joinedOn}</h2>
       </header>

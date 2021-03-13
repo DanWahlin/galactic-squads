@@ -2,7 +2,6 @@ import { accentFillRestBehavior } from "@fluentui/web-components";
 import { css, customElement, DOM, FASTElement, html, observable, ref, when } from "@microsoft/fast-element";
 import { Route } from "@microsoft/fast-router";
 import { Session } from "../account/session";
-import { getGravatarUrl } from "../kernel/gravatar";
 
 const template = html<TitleBar>`
   <div class="container">
@@ -10,7 +9,7 @@ const template = html<TitleBar>`
       <fluent-text-field placeholder="Search"></fluent-text-field>
     </div>
     <fluent-button appearance="stealth" ${ref('avatar')} @click=${x => x.toggleMenu()}>
-      <img src=${x => getGravatarUrl(x.session.currentUser.email)}>
+      <img src='static/image/avatar/${x => x.session.currentUser.id}.jpg'>
     </fluent-button>
     ${when(x => x.menuIsVisible, html<TitleBar>`
       <fluent-anchored-region

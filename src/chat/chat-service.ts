@@ -19,13 +19,19 @@ interface SquadsResponse {
   results: ThreadSummary[];
 }
 
+export interface EntityReference {
+  id: string;
+  name: string;
+}
+
 export interface Message {
-  author: string;
+  author: EntityReference;
   message: string;
 }
 
-interface ThreadResponse {
-  results: Message[]
+export interface Thread {
+  owner: EntityReference;
+  messages: Message[]
 }
 
 export class ChatService {
@@ -40,15 +46,24 @@ export class ChatService {
 
   async getThread(id: string) {
     try {
-      const response = await this.http.get<ThreadResponse>(`thread/${id}`);
-      return response.results;
+      const response = await this.http.get<Thread>(`thread/${id}`);
+      return response;
     } catch {
-      return [
-        {
-          author: "Darth Vader",
-          message: "I do not want the Emperor’s prize damaged."
-        }
-      ];
+      return {
+        owner: {
+          id: '1000',
+          name: 'Conversation'
+        },
+        messages: [
+          {
+            author: {
+              id: "4",
+              name: "Darth Vader"
+            },
+            message: "I do not want the Emperor’s prize damaged."
+          }
+        ]
+      };
     }
   }
 

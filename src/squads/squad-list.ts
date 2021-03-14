@@ -14,7 +14,8 @@ const template = html<SquadList>`
           <fluent-option :value="${x => x.owner.id}" 
                          ?selected=${(x,c) => x === c.parent.selectedThread}
                          @click=${(x, c) => Route.path.push(`squads/thread/${x.owner.id}`)}>
-            ${x => x.owner.name}
+            <img class="avatar" src='static/image/avatar/${x => x.owner.id}.jpg'>
+            <span>${x => x.owner.name}</span>
           </fluent-option>
         `)}
       </fluent-listbox>
@@ -59,8 +60,25 @@ const styles = css`
     border-width: 1px 0 0 0;
   }
 
+  fluent-option {
+    height: 48px;
+  }
+
+  fluent-option::part(content) {
+    display: flex;
+    align-items: center;
+  }
+
   .thread {
     flex: 1;
+  }
+
+  .avatar {
+    width: 36px;
+    height: 36px;
+    display: block;
+    border-radius: 50%;
+    margin-right: 12px;
   }
 `.withBehaviors(
   neutralOutlineRestBehavior

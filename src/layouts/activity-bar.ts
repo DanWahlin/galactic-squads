@@ -4,27 +4,27 @@ import { Route } from "@microsoft/fast-router";
 
 const template = html<ActivityBar>`
   <fluent-button appearance="stealth" @click=${x => Route.name.push(x, 'home')}>
-    <img src="static/image/death-star.png">
+    <img src="static/image/icon/death-star.png">
     <div class="label">Home</div>
   </fluent-button>
   <fluent-button appearance="stealth" @click=${x => Route.name.push(x, 'chat')}>
-  <img src="static/image/chat.png">
+  <img src="static/image/icon/chat.png">
     <div class="label">Chat</div>
   </fluent-button>
   <fluent-button appearance="stealth" @click=${x => Route.name.push(x, 'squads')}>
-    <img src="static/image/trooper.png">
+    <img src="static/image/icon/trooper.png">
     <div class="label">Squads</div>
   </fluent-button>
   <fluent-button appearance="stealth" @click=${x => Route.name.push(x, 'ships')}>
-    <img src="static/image/ship.webp">
+    <img src="static/image/icon/ship.webp">
     <div class="label">Ships</div>
   </fluent-button>
   <fluent-button appearance="stealth" @click=${x => Route.name.push(x, 'vehicles')}>
-    <img src="static/image/walker.png">
+    <img src="static/image/icon/walker.png">
     <div class="label">Vehicles</div>
   </fluent-button>
   <fluent-button appearance="stealth" @click=${x => Route.name.push(x, 'settings')}>
-    <img src="static/image/settings.webp">
+    <img src="static/image/icon/settings.webp">
     <div class="label">Settings</div>
   </fluent-button>
 `;

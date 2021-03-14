@@ -11,7 +11,7 @@ const template = html<ChatList>`
       <h2 class="heading">Chat</h2>
       <fluent-listbox>
         ${repeat(x => x.threads, html<ThreadSummary, ChatList>`
-          <fluent-option value="${x => x.owner.id}" 
+          <fluent-option :value="${x => x.owner.id}" 
                          ?selected=${(x,c) => x === c.parent.selectedThread}
                          @click=${(x, c) => Route.path.push(`chat/thread/${x.owner.id}`)}>
             <img class="avatar" src='static/image/avatar/${x => x.owner.id}.jpg'>

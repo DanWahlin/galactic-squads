@@ -66,7 +66,6 @@ export class ChatService {
       return response;
     } catch {
       return {
-
         owner: {
           id: threadId,
           name: 'Conversation'

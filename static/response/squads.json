@@ -1,25 +1,34 @@
 {
-  "count": 5, 
   "results": [
-      {
-          "id": "thread/101",
-          "heading": "Any Given Parsec"
-      },
-      {
-        "id": "thread/102",
-        "heading": "Ashes of Uncle Ben"
-      },
-      {
-        "id": "thread/103",
-        "heading": "Nerf Herders"
-      },
-      {
-        "id": "thread/104",
-        "heading": "Death Star Contractors"
-      },
-      {
-        "id": "thread/105",
-        "heading": "Oakland Vaders"
+    {
+      "owner": {
+        "id": "101",
+        "name": "Any Given Parsec"
       }
+    },
+    {
+      "owner": {
+        "id": "102",
+        "name": "Ashes of Uncle Ben"
+      }
+    },
+    {
+      "owner": {
+        "id": "103",
+        "name": "Nerf Herders"
+      }
+    },
+    {
+      "owner": {
+        "id": "104",
+        "name": "Death Star Contractors"
+      }
+    },
+    {
+      "owner": {
+        "id": "105",
+        "name": "Oakland Vaders"
+      }
+    }
   ]
 }

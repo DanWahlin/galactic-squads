@@ -11,7 +11,7 @@ const template = html<SquadList>`
       <h2 class="heading">Chat</h2>
       <fluent-listbox>
         ${repeat(x => x.threads, html<ThreadSummary, SquadList>`
-          <fluent-option value="${x => x.owner.id}" 
+          <fluent-option :value="${x => x.owner.id}" 
                          ?selected=${(x,c) => x === c.parent.selectedThread}
                          @click=${(x, c) => Route.path.push(`squads/thread/${x.owner.id}`)}>
             ${x => x.owner.name}

@@ -1,7 +1,21 @@
 {
-  "results": [
+  "owner": {
+    "id": "101",
+    "name": "Any Given Parsec"
+  },
+  "messages": [
     {
-      "author": "Darth Vader",
+      "author": {
+        "id": "11",
+        "name": "Wanton"
+      },
+      "message": "Inform Lord Vader we have a prisoner."
+    },
+    {
+      "author": {
+        "id": "4",
+        "name": "Darth Vader"
+      },
       "message": "Impressive. Most impressive."
     }
   ]

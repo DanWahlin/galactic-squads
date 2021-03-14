@@ -1,8 +1,71 @@
 {
-  "results": [
+  "owner": {
+    "id": "103",
+    "name": "Nerf Herders"
+  },
+  "messages": [
     {
-      "author": "Darth Vader",
-      "message": "Be careful not to choke on your aspirations."
+      "author": {
+        "id": "1",
+        "name": "Luke Skywalker"
+      },
+      "message": "Hi there."
+    },
+    {
+      "author": {
+        "id": "13",
+        "name": "KE-829"
+      },
+      "message": "Let me see your identification."
+    },
+    {
+      "author": {
+        "id": "3",
+        "name": "R2-D2"
+      },
+      "message": "Beep. Boop. Beep."
+    },
+    {
+      "author": {
+        "id": "10",
+        "name": "Obi-Wan Kenobi"
+      },
+      "message": "You don’t need to see his identification."
+    },
+    {
+      "author": {
+        "id": "13",
+        "name": "KE-829"
+      },
+      "message": "We don’t need to see his identification. "
+    },
+    {
+      "author": {
+        "id": "10",
+        "name": "Obi-Wan Kenobi"
+      },
+      "message": "These aren’t the droids you’re looking for."
+    },
+    {
+      "author": {
+        "id": "13",
+        "name": "KE-829"
+      },
+      "message": "These aren’t the droids we’re looking for."
+    },
+    {
+      "author": {
+        "id": "10",
+        "name": "Obi-Wan Kenobi"
+      },
+      "message": "He can go about his business."
+    },
+    {
+      "author": {
+        "id": "13",
+        "name": "KE-829"
+      },
+      "message": "You can go about your business."
     }
   ]
 }

@@ -38,7 +38,7 @@ export class MainRouterConfig extends RouterConfiguration<RouteSettings> {
         ] 
       },
       { path: 'chat', element: ChatList, title: 'Chat', name: 'chat', childRouters: true },
-      { path: 'squads', element: SquadList, title: 'Squads', name: 'squads', childRouters: true },
+      { path: 'squads', element: SquadList, name: 'squads', childRouters: true },
       { path: 'ships', element: ShipList, title: 'Ships', name: 'ships' },
       { path: 'vehicles', element: VehicleList, title: 'Vehicles', name: 'vehicles' },
       { path: 'not-found', element: NotFound, title: "Not Found" }

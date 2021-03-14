@@ -1,11 +1,29 @@
 {
-  "results": [
+  "owner": {
+    "id": "104",
+    "name": "Death Star Contractors"
+  },
+  "messages": [
     {
-      "author": "Darth Vader",
-      "message": "I am altering the deal. Pray I don’t alter it any further."
-    }, {
-      "author": "Darth Vader",
+      "author": {
+        "id": "4",
+        "name": "Darth Vader"
+      },
       "message": "Don’t be too proud of this technological terror you’ve constructed. The ability to destroy a planet is insignificant next to the power of the Force."
+    },
+    {
+      "author": {
+        "id": "12",
+        "name": "TD-787"
+      },
+      "message": "The Death Star plans are not in the main computer."
+    },
+    {
+      "author": {
+        "id": "4",
+        "name": "Darth Vader"
+      },
+      "message": "I am altering the deal. Pray I don’t alter it any further."
     }
   ]
 }

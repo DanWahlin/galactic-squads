@@ -95,11 +95,14 @@ export class ChatList extends FASTElement {
   @observable threads!: ThreadSummary[];
   @observable selectedThread!: ThreadSummary;
 
-  enter(phase: NavigationPhase) {
-    this.chatService.getRecentThreadSummaries()
-      .then(x => {
-        this.threads = x;
-        this.selectedThread = x.find(x => `thread/${x.owner.id}` === phase.route.allParams['fast-child-route'])!;
-      });
+  async enter(phase: NavigationPhase) {
+    const childRoute = phase.route.allParams['fast-child-route'];
+    this.threads = await this.chatService.getRecentThreadSummaries();
+
+    if (childRoute) {
+      this.selectedThread = this.threads.find(x => `thread/${x.owner.id}` === childRoute)!;
+    } else if (this.threads.length > 0) {
+      phase.cancel(() => Route.path.replace(`chat/thread/${this.threads[0].owner.id}`));
+    }
   }
 }

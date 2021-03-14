@@ -8,7 +8,7 @@ import { SquadRoutes } from "./squad-routes";
 const template = html<SquadList>`
   <div class="container">
     <div class="list">
-      <h2 class="heading">Chat</h2>
+      <h2 class="heading">Squads</h2>
       <fluent-listbox>
         ${repeat(x => x.threads, html<ThreadSummary, SquadList>`
           <fluent-option :value="${x => x.owner.id}" 
@@ -77,11 +77,14 @@ export class SquadList extends FASTElement {
   @observable threads!: ThreadSummary[];
   @observable selectedThread!: ThreadSummary;
 
-  enter(phase: NavigationPhase) {
-    this.chatService.getSquads()
-      .then(x => {
-        this.threads = x;
-        this.selectedThread = x.find(x => `thread/${x.owner.id}` === phase.route.allParams['fast-child-route'])!;
-      });
+  async enter(phase: NavigationPhase) {
+    const childRoute = phase.route.allParams['fast-child-route'];
+    this.threads = await this.chatService.getSquads();
+
+    if (childRoute) {
+      this.selectedThread = this.threads.find(x => `thread/${x.owner.id}` === childRoute)!;
+    } else if (this.threads.length > 0) {
+      phase.cancel(() => Route.path.replace(`squads/thread/${this.threads[0].owner.id}`));
+    }
   }
 }

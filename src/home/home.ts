@@ -44,14 +44,13 @@ const template = html<HomeScreen>`
 const styles = css`
   :host {
     ${mixin_screen()}
-    padding-top: 16px;
   }
 
   ${styles_enterAnimation}
   ${styles_headers}
 
   h1 {
-      padding-left: 16px;
+    padding: 16px 0 0 16px;
   }
 
   fluent-card {

@@ -11,6 +11,7 @@ import { FluentTextField } from "@fluentui/web-components";
 const template = html<TodoForm>`
   <form @submit=${x => x.submitTodo()}>
       <fluent-text-field
+          autofocus
           :value=${x => x.description}
           @input=${(x, c) => x.onDescriptionInput(c.event)}
       ></fluent-text-field>

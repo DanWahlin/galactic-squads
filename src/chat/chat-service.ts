@@ -58,6 +58,20 @@ export class ChatService {
     };
 
     thread.messages.push(threadMessage);
+
+    if (message.toLocaleLowerCase().indexOf('old man') !== -1) {
+      setTimeout(() => {
+        const counterMessage: Message = {
+          "author": {
+            "id": "10",
+            "name": "Obi-Wan Kenobi"
+          },
+          message: "You can't win Darth. If you strike me down, I shall become more powerful than you can possibly imagine."
+        };
+    
+        thread.messages.push(counterMessage);
+      }, 2500);
+    }
   }
 
   async getThread(threadId: string) {

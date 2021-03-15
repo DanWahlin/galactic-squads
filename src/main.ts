@@ -1,60 +1,10 @@
 import { FASTElement, customElement, html, css, observable, ref } from '@microsoft/fast-element';
-import { DataGridCellStyles, DataGridRowStyles, FluentAccordion, FluentAccordionItem, FluentAnchor, FluentButton, FluentCard, FluentCheckbox, FluentDataGrid, FluentDataGridCell, FluentDataGridRow, FluentDesignSystemProvider, FluentDivider, FluentListbox, FluentMenu, FluentMenuItem, FluentOption, FluentSlider, FluentSliderLabel, FluentTab, FluentTabs, FluentTextField, neutralLayerL1Behavior } from '@fluentui/web-components';
-import { DefaultRouteRecognizer, FASTRouter } from '@microsoft/fast-router';
-import { AnchoredRegion, AnchoredRegionTemplate, Container, createDataGridCellTemplate, createDataGridRowTemplate, DataGridCell, DataGridRow, inject, Registration } from '@microsoft/fast-foundation';
+import { neutralLayerL1Behavior } from '@fluentui/web-components';
+import { DefaultRouteRecognizer } from '@microsoft/fast-router';
+import { Container, inject, Registration } from '@microsoft/fast-foundation';
 import { MainRouterConfig } from './routes';
 import { styles_fontFaces } from './typography';
-
-FluentDesignSystemProvider;
-FASTRouter;
-FluentCard;
-FluentButton;
-FluentTextField;
-FluentAnchor;
-FluentMenu;
-FluentMenuItem;
-FluentDivider;
-FluentListbox;
-FluentOption;
-FluentCheckbox;
-FluentSlider;
-FluentSliderLabel;
-FluentAccordion;
-FluentAccordionItem;
-FluentAccordion;
-FluentMenu;
-FluentMenuItem;
-FluentDataGrid;
-FluentDataGridRow;
-FluentDataGridCell;
-FluentTabs;
-FluentTab;
-
-@customElement({
-  name: 'fast-data-grid-row',
-  template: createDataGridRowTemplate('fast'),
-  styles: DataGridRowStyles
-})
-export class FASTDataGridRow extends DataGridRow {}
-
-@customElement({
-  name: 'fast-data-grid-cell',
-  template: createDataGridCellTemplate('fast'),
-  styles: DataGridCellStyles
-})
-export class FASTDataGridCell extends DataGridCell {}
-
-@customElement({
-  name: "fluent-anchored-region",
-  template: AnchoredRegionTemplate,
-  styles: css`
-    :host {
-        contain: layout;
-        display: block;
-    }
-  `
-})
-export class FluentAnchoredRegion extends AnchoredRegion {}
+import './components';
 
 const template = html<GalacticSquads>`
   <fluent-design-system-provider use-defaults ${ref('provider')}>

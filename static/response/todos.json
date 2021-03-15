@@ -99,11 +99,6 @@
       "type": "TodoItem",
       "description": "Eat cake.",
       "done": false
-    },
-    {
-      "type": "TodoItem",
-      "description": "Watch empire fall.",
-      "done": false
     }
   ]
 }

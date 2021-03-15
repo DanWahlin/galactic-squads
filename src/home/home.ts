@@ -144,8 +144,7 @@ const styles = css`
       text-decoration: line-through;
       transition: var(animation-ease-in-fast);
   }
-`
-.withBehaviors (
+`.withBehaviors (
   neutralLayerL1AltBehavior,
   neutralLayerL1Behavior,
   neutralLayerL2Behavior,

@@ -23,9 +23,9 @@ const template = html<ActivityBar>`
     <img src="static/image/icon/walker.png">
     <div class="label">Vehicles</div>
   </fluent-button>
-  <fluent-button appearance="stealth" @click=${x => Route.name.push(x, 'settings')}>
-    <img src="static/image/icon/settings.webp">
-    <div class="label">Settings</div>
+  <fluent-button appearance="stealth" @click=${x => Route.name.push(x, 'help')}>
+    <img src="static/image/icon/help.png">
+    <div class="label">Help</div>
   </fluent-button>
 `;
 

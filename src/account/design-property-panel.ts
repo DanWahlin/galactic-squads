@@ -299,7 +299,6 @@ function findProvider(element: HTMLElement) {
 
     while (current) {
         if (current.tagName === 'FLUENT-DESIGN-SYSTEM-PROVIDER') {
-            console.log(current);
             return current;
         }
 
